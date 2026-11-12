@@ -19,7 +19,7 @@ export const CostCalculator: React.FC<CostCalculatorProps> = ({ onOpenQuoteWithE
   // Competitive US rates calibrated slightly below legacy market benchmarks without bargain-bin discount claims
   const speedTiers = [
     { id: 'instant', label: 'Instant AI', rate: 0.20, desc: 'Sub-minute automated transcription' },
-    { id: 'standard', label: 'Standard 48h', rate: 1.45, desc: '48h human certified (Save vs $1.99 agency rate)' },
+    { id: 'standard', label: 'Standard 48h', rate: 1.45, desc: '48h human certified (Save vs $1.99 market benchmark)' },
     { id: 'rush', label: 'Rush 24h', rate: 1.95, desc: 'Next-day priority delivery' },
     { id: 'priority', label: 'Same-Day 12h', rate: 2.50, desc: 'Expedited courtroom deadline' }
   ];

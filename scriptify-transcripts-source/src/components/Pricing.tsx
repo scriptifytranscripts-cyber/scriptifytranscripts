@@ -71,7 +71,7 @@ export const Pricing: React.FC<PricingProps> = ({ onSelectPlan }) => {
             <span>Competitive Market Pricing</span>
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-white tracking-tight">
-            Institutional quality with competitive US market rates.
+            Institutional quality with competitive market rates.
           </h2>
           <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
             Transparent per-minute billing calibrated slightly below traditional agency benchmarks, giving corporate and legal clients a clear competitive edge without compromising security, chain of custody, or accuracy.

@@ -15,6 +15,8 @@ import {
   RotateCcw
 } from 'lucide-react';
 import { formatTime } from '../utils/audioHelper';
+import legalCourtroomBg from '../assets/images/legal_courtroom_deposition_1794485479232.jpg';
+import legalDocketSample from '../assets/images/legal_trial_transcripts_1794485493654.jpg';
 
 interface HeroProps {
   onOpenPortal: () => void;
@@ -244,11 +246,23 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
 
   return (
     <section id="hero" className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-24">
-      {/* Ambient background glow matching the waveform gradient tones */}
-      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-indigo-600/10 blur-[140px] rounded-full pointer-events-none" />
-      <div className="absolute top-1/3 right-10 w-[500px] h-[320px] bg-rose-600/10 blur-[140px] rounded-full pointer-events-none" />
+      {/* Authentic Legal Transcription Background with dark cinematic overlay */}
+      <div className="absolute inset-0 pointer-events-none z-0">
+        <img
+          src={legalCourtroomBg}
+          alt="Legal courtroom deposition and transcription proceedings"
+          className="w-full h-full object-cover object-center opacity-30 filter contrast-125 saturate-75"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/92 to-slate-950/85" />
+        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/85 to-slate-950" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-950/30 via-transparent to-transparent" />
+      </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6">
+      {/* Ambient background glow matching the waveform gradient tones */}
+      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-indigo-600/10 blur-[140px] rounded-full pointer-events-none z-0" />
+      <div className="absolute top-1/3 right-10 w-[500px] h-[320px] bg-rose-600/10 blur-[140px] rounded-full pointer-events-none z-0" />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
           {/* Left Column: Comprehensive Transcription Positioning & Distinct CTAs */}
           <div className="lg:col-span-7 space-y-6">
@@ -262,7 +276,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400">
                 Courtroom, corporate & clinical audio
               </span>{' '}
-              at competitive US rates.
+              at competitive rates.
             </h1>
 
             <p className="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl">
