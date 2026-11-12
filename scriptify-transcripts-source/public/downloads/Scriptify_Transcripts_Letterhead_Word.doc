@@ -1,0 +1,56 @@
+<html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+<head>
+  <meta charset="utf-8">
+  <title>Scriptify Transcripts Letterhead</title>
+  <!--[if gte mso 9]>
+  <xml>
+    <w:WordDocument>
+      <w:View>Print</w:View>
+      <w:Zoom>100</w:Zoom>
+      <w:DoNotOptimizeForBrowser/>
+    </w:WordDocument>
+  </xml>
+  <![endif]-->
+  <style>
+    body { font-family: Arial, sans-serif; font-size: 11pt; color: #1e293b; line-height: 1.5; }
+    table.header { width: 100%; border-bottom: 2pt solid #0b1e36; margin-bottom: 20pt; padding-bottom: 15pt; }
+    .brand { font-size: 20pt; font-weight: bold; color: #0b1e36; }
+    .accent { color: #00a8e8; }
+    .tagline { font-size: 9pt; color: #64748b; font-weight: bold; text-transform: uppercase; }
+    .address { font-size: 9pt; color: #475569; text-align: right; }
+    .meta-table { width: 100%; background: #f1f5f9; padding: 10pt; margin-bottom: 20pt; font-size: 10pt; }
+    .footer { font-size: 8pt; color: #94a3b8; text-align: center; border-top: 1pt solid #cbd5e1; padding-top: 10pt; margin-top: 40pt; }
+  </style>
+</head>
+<body>
+  <table class="header">
+    <tr>
+      <td width="60%">
+        <div class="brand">SCRIPTIFY <span class="accent">TRANSCRIPTS</span></div>
+        <div class="tagline">Accurate &bull; Secure &bull; Fast</div>
+      </td>
+      <td width="40%" class="address">
+        <b>Scriptify Transcripts</b><br>
+        30 N Gould St, STE R<br>
+        Sheridan, WY 82801, United States<br>
+        contact@scriptifytranscripts.com<br>
+        scriptifytranscripts.com
+      </td>
+    </tr>
+  </table>
+
+  <table class="meta-table">
+    <tr><td><b>Date:</b></td><td>November 10, 2026</td></tr>
+    <tr><td><b>Matter / Reference:</b></td><td>Official Certified Transcript #ST-2026</td></tr>
+    <tr><td><b>Format Standard:</b></td><td>Rule 30(b)(6) Line-Numbered Deposition</td></tr>
+  </table>
+
+  <h2>Certificate of Accuracy</h2>
+  <p>This certified document confirms that the audio recording submitted to Scriptify Transcripts has been transcribed verbatim in accordance with court reporting standards.</p>
+  <p>[Type your legal transcript body or official correspondence here...]</p>
+
+  <div class="footer">
+    Scriptify Transcripts &bull; 30 N Gould St, STE R, Sheridan, WY 82801 &bull; contact@scriptifytranscripts.com
+  </div>
+</body>
+</html>

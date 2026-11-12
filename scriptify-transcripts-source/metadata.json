@@ -1,0 +1,6 @@
+{
+  "name": "Cozia Transcribe - Secure Audio Transcription & Intelligence",
+  "description": "Enterprise-grade audio transcription platform with intuitive secure upload dashboard, real-time waveform sync, speaker diarization, and strict data privacy compliance.",
+  "requestFramePermissions": ["microphone"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
