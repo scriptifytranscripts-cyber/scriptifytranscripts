@@ -1,5 +1,8 @@
 import React from 'react';
 import { Building2, ShieldCheck, FileText, ArrowUpRight } from 'lucide-react';
+import legalCourtroomImg from '../assets/images/legal_courtroom_deposition_1794485479232.jpg';
+import clinicalBoardReviewImg from '../assets/images/clinical_board_review_1794597870554.jpg';
+import legalTrialTranscriptsImg from '../assets/images/legal_trial_transcripts_1794485493654.jpg';
 
 interface PastClientsProps {
   onOpenPortalWithSample: (sampleId: string) => void;
@@ -15,7 +18,9 @@ export const PastClients: React.FC<PastClientsProps> = ({ onOpenPortalWithSample
       details: 'Transitioned all complex multi-witness depositions to Scriptify Transcripts. Certified line-numbered transcripts delivered with synchronized video timecodes, reducing outside court reporter transcription expenses by 58%.',
       metric: '58% Cost Savings',
       secondaryMetric: '12h Rush Turnaround',
-      sampleId: 'legal'
+      sampleId: 'legal',
+      image: legalCourtroomImg,
+      imageAlt: 'Legal courtroom witness deposition and court reporter proceedings'
     },
     {
       sector: 'Corporate Finance & M&A',
@@ -25,7 +30,9 @@ export const PastClients: React.FC<PastClientsProps> = ({ onOpenPortalWithSample
       details: 'Scriptify Transcripts processes confidential board meetings, M&A strategy sessions, and earnings calls with zero persistent data retention, ensuring total SEC compliance and trade secret protection.',
       metric: 'Zero-Retention Guarantee',
       secondaryMetric: '< 15 Min Ingestion',
-      sampleId: 'earnings'
+      sampleId: 'earnings',
+      image: clinicalBoardReviewImg,
+      imageAlt: 'Attorneys and compliance counsel reviewing transcript binders and digital audio timelines'
     },
     {
       sector: 'Healthcare & Clinical Research',
@@ -35,7 +42,9 @@ export const PastClients: React.FC<PastClientsProps> = ({ onOpenPortalWithSample
       details: 'Complex audio featuring multi-physician rounds, pharmacological dosages, and medical terminology transcribed with precision. Automated PII masking protects patient confidentiality under signed BAA.',
       metric: 'HIPAA BAA Executed',
       secondaryMetric: '99.9% Term Fidelity',
-      sampleId: 'clinical'
+      sampleId: 'clinical',
+      image: legalTrialTranscriptsImg,
+      imageAlt: 'Certified transcript binders, docket files, and attorney review headphones'
     }
   ];
 
@@ -79,28 +88,38 @@ export const PastClients: React.FC<PastClientsProps> = ({ onOpenPortalWithSample
           {caseStudies.map((study) => (
             <div
               key={study.client}
-              className="p-8 rounded-xl bg-white border border-[#E2DED5] flex flex-col justify-between hover:border-[#0F2A4A] transition-all shadow-xs space-y-6"
+              className="rounded-xl bg-white border border-[#E2DED5] flex flex-col justify-between hover:border-[#0F2A4A] transition-all shadow-xs overflow-hidden group"
             >
-              <div className="space-y-4">
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-[#9A6B2F] font-semibold text-[11px]">
-                    {study.sector}
-                  </span>
-                  <span className="text-slate-500">{study.location}</span>
+              <div>
+                <div className="relative aspect-[16/10] overflow-hidden bg-[#F2EFE9]">
+                  <img
+                    src={study.image}
+                    alt={study.imageAlt}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
                 </div>
 
-                <div className="space-y-2">
-                  <h3 className="font-serif text-lg font-bold text-[#0F1E36] leading-snug">
-                    {study.headline}
-                  </h3>
-                  <div className="text-xs text-[#0F2A4A] font-semibold">{study.client}</div>
-                  <p className="text-xs text-slate-600 leading-relaxed pt-1">
-                    {study.details}
-                  </p>
+                <div className="p-6 sm:p-7 space-y-4">
+                  <div className="flex items-center justify-between text-xs">
+                    <span className="text-[#9A6B2F] font-semibold text-[11px]">
+                      {study.sector}
+                    </span>
+                    <span className="text-slate-500">{study.location}</span>
+                  </div>
+
+                  <div className="space-y-2">
+                    <h3 className="font-serif text-lg font-bold text-[#0F1E36] leading-snug">
+                      {study.headline}
+                    </h3>
+                    <div className="text-xs text-[#0F2A4A] font-semibold">{study.client}</div>
+                    <p className="text-xs text-slate-600 leading-relaxed pt-1">
+                      {study.details}
+                    </p>
+                  </div>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-[#E2DED5] space-y-4">
+              <div className="px-6 sm:px-7 pb-6 sm:pb-7 pt-4 border-t border-[#E2DED5] space-y-4">
                 <div className="grid grid-cols-2 gap-2 text-xs">
                   <div className="p-2.5 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-center">
                     <span className="text-[10px] text-slate-500 block uppercase">Outcome</span>
@@ -114,7 +133,7 @@ export const PastClients: React.FC<PastClientsProps> = ({ onOpenPortalWithSample
 
                 <button
                   onClick={() => onOpenPortalWithSample(study.sampleId)}
-                  className="w-full py-2.5 px-3 text-xs font-semibold text-[#0F2A4A] bg-[#FAF8F4] hover:bg-[#0F2A4A] hover:text-white rounded-lg border border-[#D4CFC4] hover:border-[#0F2A4A] transition-colors flex items-center justify-center gap-1.5 cursor-pointer group"
+                  className="w-full py-2.5 px-3 text-xs font-semibold text-[#0F2A4A] bg-[#FAF8F4] hover:bg-[#0F2A4A] hover:text-white rounded-lg border border-[#D4CFC4] hover:border-[#0F2A4A] transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
                 >
                   <FileText className="w-3.5 h-3.5" />
                   <span>Test this Format in Portal</span>

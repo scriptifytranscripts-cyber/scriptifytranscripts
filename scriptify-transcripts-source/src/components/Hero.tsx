@@ -238,7 +238,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample }) => {
 
   return (
     <section id="hero" className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 bg-[#FAF8F4] border-b border-[#E2DED5]">
-      {/* Authentic Legal Courtroom Background with Warm Parchment Scrim */}
+      {/* Authentic Legal Courtroom Background with Calibrated Parchment Scrim */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <img
           src={legalCourtroomBg}
@@ -246,11 +246,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample }) => {
             (e.currentTarget as HTMLImageElement).src = '/legal-bg.jpg';
           }}
           alt="Legal courtroom deposition and transcription proceedings"
-          className="w-full h-full object-cover object-center opacity-22 filter saturate-75 contrast-105"
+          className="w-full h-full object-cover object-center opacity-45 filter saturate-85 contrast-105"
         />
-        {/* Warm Alabaster Directional Scrim for high-contrast judicial legibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F4] via-[#FAF8F4]/92 to-[#FAF8F4]/70" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F4] via-transparent to-[#FAF8F4]/60" />
+        {/* Calibrated Warm Parchment Directional Scrim: keeps left copy crisp while revealing courtroom scene on right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F4] via-[#FAF8F4]/88 to-[#FAF8F4]/40" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F4] via-transparent to-[#FAF8F4]/55" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">

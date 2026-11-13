@@ -1,6 +1,8 @@
 import React from 'react';
 import { Quote } from 'lucide-react';
 import avatarSecurityDirector from '../assets/images/avatar_security_director_1794310482642.jpg';
+import attorneyPortraitVance from '../assets/images/attorney_portrait_vance_1794597870687.jpg';
+import medicalDirectorAris from '../assets/images/medical_director_aris_1794597871555.jpg';
 
 export const Testimonials: React.FC = () => {
   const reviews = [
@@ -11,6 +13,7 @@ export const Testimonials: React.FC = () => {
       quote:
         'Prior to Scriptify Transcripts, our litigation team waited 48 hours and paid $2.20 per minute for witness deposition transcripts. With Scriptify, certified transcripts are synchronized with video in 4 minutes, cutting outside stenography spend while maintaining court-certified fidelity.',
       metric: 'Rule 30(b)(6) Litigation Ready',
+      avatar: attorneyPortraitVance,
     },
     {
       name: 'Dr. Rebecca Aris, MD',
@@ -19,6 +22,7 @@ export const Testimonials: React.FC = () => {
       quote:
         'Zero retention was our non-negotiable prerequisite. Scriptify signed our BAA within 24 hours. The team handles complex pharmacological terms and multi-physician rounds without errors, saving our clinical specialists over 2.5 hours per shift in documentation.',
       metric: '2.5 Hours Saved Per Clinical Shift',
+      avatar: medicalDirectorAris,
     },
     {
       name: 'Marcus K. Lind',
@@ -65,18 +69,12 @@ export const Testimonials: React.FC = () => {
                 </div>
 
                 <div className="flex items-center gap-3">
-                  {item.avatar ? (
-                    <img
-                      src={item.avatar}
-                      alt={item.name}
-                      referrerPolicy="no-referrer"
-                      className="w-10 h-10 rounded-full object-cover border border-[#D4CFC4]"
-                    />
-                  ) : (
-                    <div className="w-10 h-10 rounded-full bg-[#0F2A4A] text-white flex items-center justify-center font-bold text-xs">
-                      {item.name.charAt(0)}
-                    </div>
-                  )}
+                  <img
+                    src={item.avatar}
+                    alt={item.name}
+                    referrerPolicy="no-referrer"
+                    className="w-11 h-11 rounded-full object-cover object-top border border-[#D4CFC4] shrink-0"
+                  />
 
                   <div className="text-xs">
                     <div className="font-bold text-[#0F1E36]">{item.name}</div>

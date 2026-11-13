@@ -19,8 +19,14 @@ import {
   Lock,
   Building2,
   Clock,
-  ArrowLeft
+  ArrowLeft,
+  CheckCircle2,
+  FileText
 } from 'lucide-react';
+import legalStenographerDeskImg from './assets/images/legal_stenographer_desk_1794597870198.jpg';
+import clinicalBoardReviewImg from './assets/images/clinical_board_review_1794597870554.jpg';
+import legalTrialTranscriptsImg from './assets/images/legal_trial_transcripts_1794485493654.jpg';
+import securityVaultImg from './assets/images/security_vault_datacenter_1794310482794.jpg';
 
 export default function App() {
   const [currentView, setCurrentView] = useState<ViewType>('overview');
@@ -179,20 +185,29 @@ export default function App() {
                   {/* Card 1: Services */}
                   <div
                     onClick={() => setCurrentView('services')}
-                    className="p-6 rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A] transition-all cursor-pointer group flex flex-col justify-between space-y-4 shadow-xs"
+                    className="rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A] transition-all cursor-pointer group flex flex-col justify-between overflow-hidden shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center">
-                        <Scale className="w-5 h-5" />
+                    <div>
+                      <div className="relative aspect-[16/10] overflow-hidden bg-[#F2EFE9]">
+                        <img
+                          src={legalStenographerDeskImg}
+                          alt="Certified legal transcriptionist working on stenotype keyboard with deposition transcript monitor"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-white/95 border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center shadow-xs">
+                          <Scale className="w-4 h-4" />
+                        </div>
                       </div>
-                      <h3 className="text-base font-bold text-[#0F1E36] group-hover:text-[#0F2A4A] transition-colors">
-                        Services & Practice Areas
-                      </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        Rule 30(b)(6) court depositions, executive board briefings, clinical research trials, and media subtitling.
-                      </p>
+                      <div className="p-5 space-y-2">
+                        <h3 className="font-serif text-base font-bold text-[#0F1E36] group-hover:text-[#0F2A4A] transition-colors">
+                          Services & Practice Areas
+                        </h3>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          Rule 30(b)(6) court depositions, executive board briefings, clinical research trials, and media subtitling.
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-xs font-semibold text-[#0F2A4A] flex items-center gap-1">
+                    <div className="px-5 pb-5 text-xs font-semibold text-[#0F2A4A] flex items-center gap-1">
                       <span>View Practice Areas</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                     </div>
@@ -201,20 +216,29 @@ export default function App() {
                   {/* Card 2: Clients */}
                   <div
                     onClick={() => setCurrentView('clients')}
-                    className="p-6 rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A] transition-all cursor-pointer group flex flex-col justify-between space-y-4 shadow-xs"
+                    className="rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A] transition-all cursor-pointer group flex flex-col justify-between overflow-hidden shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center">
-                        <Building2 className="w-5 h-5" />
+                    <div>
+                      <div className="relative aspect-[16/10] overflow-hidden bg-[#F2EFE9]">
+                        <img
+                          src={clinicalBoardReviewImg}
+                          alt="Litigation counsel reviewing printed transcript binders alongside synchronized audio timeline"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-white/95 border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center shadow-xs">
+                          <Building2 className="w-4 h-4" />
+                        </div>
                       </div>
-                      <h3 className="text-base font-bold text-[#0F1E36] group-hover:text-[#0F2A4A] transition-colors">
-                        Client Case Studies
-                      </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        Track record with national trial litigation counsel, clinical research institutions, and advisory groups.
-                      </p>
+                      <div className="p-5 space-y-2">
+                        <h3 className="font-serif text-base font-bold text-[#0F1E36] group-hover:text-[#0F2A4A] transition-colors">
+                          Client Case Studies
+                        </h3>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          Track record with national trial litigation counsel, clinical research institutions, and advisory groups.
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-xs font-semibold text-[#0F2A4A] flex items-center gap-1">
+                    <div className="px-5 pb-5 text-xs font-semibold text-[#0F2A4A] flex items-center gap-1">
                       <span>View Case Studies</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                     </div>
@@ -223,20 +247,29 @@ export default function App() {
                   {/* Card 3: Pricing */}
                   <div
                     onClick={() => setCurrentView('pricing')}
-                    className="p-6 rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A] transition-all cursor-pointer group flex flex-col justify-between space-y-4 shadow-xs"
+                    className="rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A] transition-all cursor-pointer group flex flex-col justify-between overflow-hidden shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center">
-                        <Clock className="w-5 h-5" />
+                    <div>
+                      <div className="relative aspect-[16/10] overflow-hidden bg-[#F2EFE9]">
+                        <img
+                          src={legalTrialTranscriptsImg}
+                          alt="Bound deposition transcript binder with line numbers, gavel, and legal transcription headphones"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-white/95 border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center shadow-xs">
+                          <Clock className="w-4 h-4" />
+                        </div>
                       </div>
-                      <h3 className="text-base font-bold text-[#0F1E36] group-hover:text-[#0F2A4A] transition-colors">
-                        Pricing & Estimator
-                      </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        Starting at a competitive $1.45/minute. Calculate your institutional savings against legacy agencies instantly.
-                      </p>
+                      <div className="p-5 space-y-2">
+                        <h3 className="font-serif text-base font-bold text-[#0F1E36] group-hover:text-[#0F2A4A] transition-colors">
+                          Pricing & Estimator
+                        </h3>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          Starting at a competitive $1.45/minute. Calculate your institutional savings against legacy agencies instantly.
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-xs font-semibold text-[#0F2A4A] flex items-center gap-1">
+                    <div className="px-5 pb-5 text-xs font-semibold text-[#0F2A4A] flex items-center gap-1">
                       <span>Open Cost Estimator</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                     </div>
@@ -245,22 +278,106 @@ export default function App() {
                   {/* Card 4: Security */}
                   <div
                     onClick={() => setCurrentView('security')}
-                    className="p-6 rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A] transition-all cursor-pointer group flex flex-col justify-between space-y-4 shadow-xs"
+                    className="rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A] transition-all cursor-pointer group flex flex-col justify-between overflow-hidden shadow-xs"
                   >
-                    <div className="space-y-3">
-                      <div className="w-10 h-10 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center">
-                        <Lock className="w-5 h-5" />
+                    <div>
+                      <div className="relative aspect-[16/10] overflow-hidden bg-[#F2EFE9]">
+                        <img
+                          src={securityVaultImg}
+                          alt="Enterprise cryptographic vault and zero-retention server architecture"
+                          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        />
+                        <div className="absolute top-3 left-3 w-9 h-9 rounded-lg bg-white/95 border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center shadow-xs">
+                          <Lock className="w-4 h-4" />
+                        </div>
                       </div>
-                      <h3 className="text-base font-bold text-[#0F1E36] group-hover:text-[#0F2A4A] transition-colors">
-                        Security & HIPAA
-                      </h3>
-                      <p className="text-xs text-slate-600 leading-relaxed">
-                        Client-side AES-256 pre-encryption, RAM buffer purge, zero data retention, and signed Bilateral NDAs.
-                      </p>
+                      <div className="p-5 space-y-2">
+                        <h3 className="font-serif text-base font-bold text-[#0F1E36] group-hover:text-[#0F2A4A] transition-colors">
+                          Security & HIPAA
+                        </h3>
+                        <p className="text-xs text-slate-600 leading-relaxed">
+                          Client-side AES-256 pre-encryption, RAM buffer purge, zero data retention, and signed Bilateral NDAs.
+                        </p>
+                      </div>
                     </div>
-                    <div className="text-xs font-semibold text-[#0F2A4A] flex items-center gap-1">
+                    <div className="px-5 pb-5 text-xs font-semibold text-[#0F2A4A] flex items-center gap-1">
                       <span>Review Security Charter</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Editorial Legal Transcription Craftsmanship Showcase */}
+            <section className="py-16 bg-[#F2EFE9]/70 border-y border-[#E2DED5]">
+              <div className="max-w-7xl mx-auto px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                  {/* Left: Documentary Legal Transcription Photograph */}
+                  <div className="lg:col-span-6">
+                    <div className="relative rounded-xl overflow-hidden border border-[#D4CFC4] bg-white shadow-md">
+                      <img
+                        src={legalStenographerDeskImg}
+                        alt="Certified court reporter and legal transcriptionist reviewing deposition exhibit records"
+                        className="w-full aspect-[16/10] object-cover"
+                      />
+                      <div className="p-4 bg-white border-t border-[#E2DED5] flex items-center justify-between gap-3 text-xs">
+                        <div className="flex items-center gap-2 text-[#0F1E36] font-semibold">
+                          <FileText className="w-4 h-4 text-[#9A6B2F]" />
+                          <span>Federal Rule 30(b)(6) Line-Numbered Preparation</span>
+                        </div>
+                        <span className="font-mono text-[11px] text-[#0F2A4A] font-semibold">99.8% Verified</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right: Judicial Process & Verbatim Rigor */}
+                  <div className="lg:col-span-6 space-y-5">
+                    <div className="text-xs font-semibold text-[#9A6B2F] uppercase tracking-wider">
+                      The Verbatim Standard
+                    </div>
+                    <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0F1E36] tracking-tight leading-snug">
+                      From courtroom audio to certified evidentiary record—without compromise.
+                    </h2>
+                    <p className="text-sm text-slate-700 leading-relaxed">
+                      Every deposition, arbitration hearing, and regulatory interview passes through specialist legal editors trained in statutory citations, medical expert terminology, and multi-speaker courtroom colloquy.
+                    </p>
+
+                    <div className="space-y-3 pt-1">
+                      <div className="flex items-start gap-3 text-xs text-slate-700">
+                        <CheckCircle2 className="w-4 h-4 text-[#0F2A4A] shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-[#0F1E36]">Lines 1–25 Page Formatting:</strong> Formatted for immediate bench citations, trial impeachment, and Word Index concordance.
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-3 text-xs text-slate-700">
+                        <CheckCircle2 className="w-4 h-4 text-[#0F2A4A] shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-[#0F1E36]">Dual-Pass Legal Proofing:</strong> Cross-checked against exhibit markers, proper nouns, and docket filings prior to sign-off.
+                        </span>
+                      </div>
+                      <div className="flex items-start gap-3 text-xs text-slate-700">
+                        <CheckCircle2 className="w-4 h-4 text-emerald-700 shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-[#0F1E36]">Zero-Retention Custody:</strong> Client-side AES-256 sealing ensures privileged testimony is never retained or reused.
+                        </span>
+                      </div>
+                    </div>
+
+                    <div className="pt-2 flex flex-wrap items-center gap-3">
+                      <button
+                        onClick={() => handleOpenPortalWithSample('legal')}
+                        className="px-5 py-3 bg-[#0F2A4A] hover:bg-[#173B66] text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer inline-flex items-center gap-2 shadow-sm"
+                      >
+                        <span>Inspect Live Deposition Exhibit</span>
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </button>
+                      <button
+                        onClick={() => handleOpenGeneralQuote('Certified Legal Transcription')}
+                        className="px-5 py-3 bg-white hover:bg-[#FAF8F4] text-[#0F2A4A] border border-[#D4CFC4] text-xs font-semibold rounded-lg transition-colors cursor-pointer"
+                      >
+                        Request Firm Rate Card
+                      </button>
                     </div>
                   </div>
                 </div>
