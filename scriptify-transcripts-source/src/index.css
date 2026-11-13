@@ -22,3 +22,10 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(15, 42, 74, 0.42);
 }
+
+html,
+body {
+  overflow-x: clip;
+  max-width: 100%;
+}
+

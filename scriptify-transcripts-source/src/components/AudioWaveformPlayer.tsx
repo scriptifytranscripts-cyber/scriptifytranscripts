@@ -50,11 +50,11 @@ export const AudioWaveformPlayer: React.FC<AudioWaveformPlayerProps> = ({
   return (
     <div className="bg-white border border-[#D4CFC4] rounded-xl p-5 space-y-4 shadow-xs">
       {/* Top track meta */}
-      <div className="flex items-center justify-between text-xs text-slate-600">
-        <div className="flex items-center gap-2 truncate max-w-md">
+      <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-slate-600">
+        <div className="flex items-center gap-2 min-w-0 flex-1">
           <span className="font-bold text-[#0F1E36] truncate">{audioName}</span>
         </div>
-        <div className="font-mono tabular-nums text-slate-600">
+        <div className="font-mono tabular-nums text-slate-600 shrink-0">
           <span className="text-[#0F2A4A] font-bold">{formatTime(currentTime)}</span>
           <span className="text-slate-400"> / </span>
           <span>{formatTime(duration)}</span>
@@ -128,7 +128,7 @@ export const AudioWaveformPlayer: React.FC<AudioWaveformPlayerProps> = ({
         </div>
 
         {/* Speed Control */}
-        <div className="flex items-center gap-1 bg-[#FAF8F4] p-1 rounded-lg border border-[#E2DED5]">
+        <div className="flex flex-wrap items-center gap-1 bg-[#FAF8F4] p-1 rounded-lg border border-[#E2DED5]">
           {[0.75, 1.0, 1.25, 1.5, 2.0].map((rate) => (
             <button
               key={rate}

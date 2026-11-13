@@ -64,14 +64,14 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
         </div>
 
         {/* Search bar */}
-        <div className="relative flex items-center">
+        <div className="relative flex items-center w-full sm:w-auto">
           <Search className="w-4 h-4 text-slate-500 absolute left-3 pointer-events-none" />
           <input
             type="text"
             placeholder="Search transcript..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-9 pr-14 py-1.5 text-xs bg-white border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] w-56 md:w-64"
+            className="pl-9 pr-14 py-1.5 text-xs bg-white border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] w-full sm:w-56 md:w-64"
           />
           {searchQuery && (
             <span className="absolute right-3 text-[10px] text-[#0F2A4A] font-mono font-semibold tabular-nums">
@@ -83,19 +83,19 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
 
       {/* Speaker rename inline bar */}
       {editingSpeaker && (
-        <div className="px-4 py-2.5 bg-[#FDF8F0] border-b border-[#E2DED5] flex items-center justify-between text-xs">
-          <div className="flex items-center gap-2">
+        <div className="px-4 py-2.5 bg-[#FDF8F0] border-b border-[#E2DED5] flex flex-wrap items-center justify-between gap-2 text-xs">
+          <div className="flex flex-wrap items-center gap-2">
             <span className="text-[#9A6B2F] font-semibold">Rename all occurrences of:</span>
             <span className="font-bold text-[#0F1E36]">{editingSpeaker.oldName}</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <input
               type="text"
               value={editingSpeaker.newName}
               onChange={(e) =>
                 setEditingSpeaker({ ...editingSpeaker, newName: e.target.value })
               }
-              className="px-2 py-1 bg-white border border-[#0F2A4A] rounded text-[#0F1E36] text-xs focus:outline-none"
+              className="px-2 py-1 bg-white border border-[#0F2A4A] rounded text-[#0F1E36] text-xs focus:outline-none min-w-0"
               autoFocus
             />
             <button
@@ -135,8 +135,8 @@ export const TranscriptEditor: React.FC<TranscriptEditorProps> = ({
               }`}
             >
               {/* Segment meta row */}
-              <div className="flex items-center justify-between gap-2 text-xs mb-1.5">
-                <div className="flex items-center gap-2">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs mb-1.5">
+                <div className="flex flex-wrap items-center gap-2 min-w-0">
                   <button
                     onClick={() => onSeek(seg.start)}
                     className="inline-flex items-center gap-1 font-mono text-[#0F2A4A] hover:text-[#173B66] font-semibold tabular-nums px-2 py-0.5 rounded bg-[#F2EFE9] border border-[#D4CFC4] hover:border-[#0F2A4A] transition-colors cursor-pointer"

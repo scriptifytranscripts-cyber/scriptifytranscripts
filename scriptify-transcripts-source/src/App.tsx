@@ -103,7 +103,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-[#FAF8F4] text-[#0F1E36] font-sans selection:bg-[#0F2A4A]/15 selection:text-[#0F2A4A]">
+    <div className="min-h-screen flex flex-col bg-[#FAF8F4] text-[#0F1E36] font-sans overflow-x-clip selection:bg-[#0F2A4A]/15 selection:text-[#0F2A4A]">
       {/* Top Navigation Bar */}
       <Navbar
         currentView={currentView}
@@ -166,7 +166,7 @@ export default function App() {
 
             {/* Hub Practice Areas Cards */}
             <section className="py-16 bg-[#FAF8F4]">
-              <div className="max-w-7xl mx-auto px-6 space-y-10">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 space-y-10">
                 <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                   <div>
                     <span className="text-xs font-semibold text-[#9A6B2F] uppercase tracking-wider block mb-1">
@@ -311,7 +311,7 @@ export default function App() {
 
             {/* Editorial Legal Transcription Craftsmanship Showcase */}
             <section className="py-16 bg-[#F2EFE9]/70 border-y border-[#E2DED5]">
-              <div className="max-w-7xl mx-auto px-6">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
                   {/* Left: Documentary Legal Transcription Photograph */}
                   <div className="lg:col-span-6">
@@ -321,12 +321,12 @@ export default function App() {
                         alt="Certified court reporter and legal transcriptionist reviewing deposition exhibit records"
                         className="w-full aspect-[16/10] object-cover"
                       />
-                      <div className="p-4 bg-white border-t border-[#E2DED5] flex items-center justify-between gap-3 text-xs">
+                      <div className="p-4 bg-white border-t border-[#E2DED5] flex flex-wrap items-center justify-between gap-2 text-xs">
                         <div className="flex items-center gap-2 text-[#0F1E36] font-semibold">
-                          <FileText className="w-4 h-4 text-[#9A6B2F]" />
+                          <FileText className="w-4 h-4 text-[#9A6B2F] shrink-0" />
                           <span>Federal Rule 30(b)(6) Line-Numbered Preparation</span>
                         </div>
-                        <span className="font-mono text-[11px] text-[#0F2A4A] font-semibold">99.8% Verified</span>
+                        <span className="font-mono text-[11px] text-[#0F2A4A] font-semibold shrink-0">99.8% Verified</span>
                       </div>
                     </div>
                   </div>
@@ -395,7 +395,7 @@ export default function App() {
         {/* VIEW 2: SERVICES & DEPOSITIONS */}
         {currentView === 'services' && (
           <div className="py-12 space-y-12 bg-[#FAF8F4]">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <button
                 onClick={() => setCurrentView('overview')}
                 className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#0F2A4A] font-medium transition-colors mb-4 cursor-pointer"
@@ -430,8 +430,8 @@ export default function App() {
             />
 
             {/* Courtroom Deposition Technical Specifications */}
-            <div className="max-w-7xl mx-auto px-6">
-              <div className="p-8 rounded-xl bg-white border border-[#E2DED5] space-y-6 shadow-xs">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              <div className="p-5 sm:p-8 rounded-xl bg-white border border-[#E2DED5] space-y-6 shadow-xs">
                 <div className="space-y-2">
                   <h3 className="font-serif text-xl font-bold text-[#0F1E36]">
                     Courtroom Deposition & Trial Deliverable Standards
@@ -490,7 +490,7 @@ export default function App() {
         {/* VIEW 3: CLIENT CASE STUDIES */}
         {currentView === 'clients' && (
           <div className="py-12 space-y-12 bg-[#FAF8F4]">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <button
                 onClick={() => setCurrentView('overview')}
                 className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#0F2A4A] font-medium transition-colors mb-4 cursor-pointer"
@@ -520,7 +520,7 @@ export default function App() {
         {/* VIEW 4: PRICING & ESTIMATOR */}
         {currentView === 'pricing' && (
           <div className="py-12 space-y-12 bg-[#FAF8F4]">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <button
                 onClick={() => setCurrentView('overview')}
                 className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#0F2A4A] font-medium transition-colors mb-4 cursor-pointer"
@@ -550,7 +550,7 @@ export default function App() {
         {/* VIEW 5: SECURITY & HIPAA */}
         {currentView === 'security' && (
           <div className="py-12 space-y-12 bg-[#FAF8F4]">
-            <div className="max-w-7xl mx-auto px-6">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
               <button
                 onClick={() => setCurrentView('overview')}
                 className="inline-flex items-center gap-1.5 text-xs text-slate-600 hover:text-[#0F2A4A] font-medium transition-colors mb-4 cursor-pointer"
@@ -575,8 +575,8 @@ export default function App() {
             <SecurityCompliance onOpenLegal={handleOpenLegal} />
 
             {/* Quick Actions for Compliance Documentation */}
-            <div className="max-w-7xl mx-auto px-6">
-              <div className="p-8 rounded-xl bg-white border border-[#E2DED5] flex flex-col md:flex-row items-center justify-between gap-6 shadow-xs">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              <div className="p-5 sm:p-8 rounded-xl bg-white border border-[#E2DED5] flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-xs">
                 <div className="space-y-1.5">
                   <h3 className="font-serif text-lg font-bold text-[#0F1E36]">
                     Need an Executed Bilateral NDA or HIPAA BAA?
@@ -585,7 +585,7 @@ export default function App() {
                     Our US corporate legal team executes mutual non-disclosure agreements within 2 business hours.
                   </p>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex flex-wrap items-center gap-3">
                   <button
                     onClick={() => handleOpenLegal('confidentiality')}
                     className="px-4 py-2.5 bg-[#0F2A4A] hover:bg-[#173B66] text-white font-semibold text-xs rounded-lg transition-colors cursor-pointer"

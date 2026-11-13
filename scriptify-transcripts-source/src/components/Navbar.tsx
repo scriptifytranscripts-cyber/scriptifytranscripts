@@ -50,11 +50,11 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md border-b border-[#E2DED5] transition-colors">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-6 px-4 sm:px-6 py-3">
+      <div className="max-w-7xl mx-auto flex items-center justify-between gap-2 sm:gap-4 px-3.5 sm:px-6 py-3">
         {/* Left: Native Brand Lockup — Logo blends seamlessly into light header */}
         <button
           onClick={() => handleNavClick('overview')}
-          className="flex items-center gap-3 text-left whitespace-nowrap shrink-0 cursor-pointer group"
+          className="flex items-center gap-2 sm:gap-3 text-left min-w-0 shrink cursor-pointer group"
           title="Return to Home Overview"
           aria-label="Return to Home Overview"
         >
@@ -64,10 +64,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               (e.currentTarget as HTMLImageElement).src = '/logo.jpg';
             }}
             alt="Scriptify Transcripts"
-            className="w-9 h-9 sm:w-10 sm:h-10 rounded-lg object-contain bg-white border border-[#E2DED5] group-hover:border-[#0F2A4A]/40 transition-all shrink-0"
+            className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg object-contain bg-white border border-[#E2DED5] group-hover:border-[#0F2A4A]/40 transition-all shrink-0"
           />
-          <span className="text-base sm:text-lg font-extrabold tracking-tight text-[#0F2A4A] group-hover:text-[#173B66] transition-colors">
-            SCRIPTIFY <span className="font-semibold text-[#9A6B2F] text-xs sm:text-sm tracking-wider uppercase ml-1">Transcripts</span>
+          <span className="text-sm sm:text-lg font-extrabold tracking-tight text-[#0F2A4A] group-hover:text-[#173B66] transition-colors truncate">
+            SCRIPTIFY <span className="font-semibold text-[#9A6B2F] text-[11px] sm:text-sm tracking-wider uppercase ml-0.5 sm:ml-1">Transcripts</span>
           </span>
         </button>
 
@@ -89,7 +89,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right: Sign In + Primary Action */}
-        <div className="flex items-center gap-2.5 sm:gap-3 shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {currentUser ? (
             <div className="relative">
               <button
@@ -151,7 +151,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           ) : (
             <button
               onClick={onOpenAuth}
-              className="px-3.5 py-2 text-xs font-semibold text-[#0F2A4A] hover:bg-[#FAF8F4] bg-white border border-[#D4CFC4] hover:border-[#0F2A4A] rounded-lg transition-colors cursor-pointer whitespace-nowrap shrink-0"
+              className="hidden md:inline-flex px-3.5 py-2 text-xs font-semibold text-[#0F2A4A] hover:bg-[#FAF8F4] bg-white border border-[#D4CFC4] hover:border-[#0F2A4A] rounded-lg transition-colors cursor-pointer whitespace-nowrap shrink-0"
             >
               Client Sign In
             </button>
@@ -160,7 +160,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Primary Judicial Navy Action CTA */}
           <button
             onClick={() => handleNavClick('portal')}
-            className="px-4 py-2 text-xs font-semibold text-white bg-[#0F2A4A] rounded-lg hover:bg-[#173B66] transition-colors shadow-sm whitespace-nowrap shrink-0 cursor-pointer"
+            className="hidden sm:inline-flex px-4 py-2 text-xs font-semibold text-white bg-[#0F2A4A] rounded-lg hover:bg-[#173B66] transition-colors shadow-sm whitespace-nowrap shrink-0 cursor-pointer"
           >
             Start Deposition Order
           </button>
@@ -178,7 +178,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Mobile & Tablet Slide-Down Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden border-t border-[#E2DED5] bg-[#FAF8F4] px-6 py-5 space-y-4 shadow-lg">
+        <div className="lg:hidden border-t border-[#E2DED5] bg-[#FAF8F4] px-4 sm:px-6 py-5 space-y-4 shadow-lg">
           <div className="text-[11px] font-semibold text-[#9A6B2F] uppercase tracking-wider">
             Practice Navigation
           </div>
@@ -197,13 +197,20 @@ export const Navbar: React.FC<NavbarProps> = ({
                 >
                   <Icon className="w-4 h-4 text-[#0F2A4A] shrink-0" />
                   <span className="flex-1">{item.label}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-slate-400" />
+                  <ArrowRight className="w-3.5 h-3.5 text-slate-400 shrink-0" />
                 </button>
               );
             })}
           </div>
 
           <div className="pt-3 border-t border-[#E2DED5] flex flex-col gap-2.5">
+            <button
+              onClick={() => handleNavClick('portal')}
+              className="w-full py-2.5 bg-[#0F2A4A] hover:bg-[#173B66] text-white text-xs font-semibold rounded-lg text-center cursor-pointer shadow-sm"
+            >
+              Start Deposition Order
+            </button>
+
             {!currentUser ? (
               <button
                 onClick={() => {
@@ -230,7 +237,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             )}
 
-            <div className="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-500 pt-1">
               <span>30 N Gould St, Sheridan, WY</span>
               <span>Rule 30(b)(6) Standards</span>
             </div>

@@ -198,11 +198,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 bg-[#0F1E36]/45 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-50 bg-[#0F1E36]/45 backdrop-blur-sm flex items-center justify-center p-2.5 sm:p-6 overflow-y-auto overflow-x-hidden"
       onClick={onClose}
     >
       <div
-        className="bg-white border border-[#D4CFC4] rounded-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto p-4 sm:p-6 md:p-7 relative shadow-2xl my-auto space-y-5 text-[#0F1E36]"
+        className="bg-white border border-[#D4CFC4] rounded-xl sm:rounded-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto overflow-x-hidden min-w-0 p-4 sm:p-6 md:p-7 relative shadow-2xl my-auto space-y-5 text-[#0F1E36]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
@@ -231,7 +231,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
         {/* 1-Click Demo Profiles (For Instant Zero-Friction Testing) */}
         <div className="p-3 bg-[#FAF8F4] rounded-xl border border-[#E2DED5] space-y-2">
-          <div className="flex items-center justify-between text-[11px] text-slate-600 font-medium">
+          <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] text-slate-600 font-medium">
             <span className="flex items-center gap-1 text-[#0F2A4A] font-semibold">
               <CheckCircle2 className="w-3.5 h-3.5" />
               1-Click Demo Client Logins:
@@ -259,14 +259,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         </div>
 
         {/* Enterprise Standard Auth Method Tabs */}
-        <div className="flex rounded-xl bg-[#F2EFE9] p-1 border border-[#E2DED5] gap-1 text-xs">
+        <div className="flex rounded-xl bg-[#F2EFE9] p-1 border border-[#E2DED5] gap-1 text-[11px] sm:text-xs">
           <button
             type="button"
             onClick={() => {
               setAuthMethod('sso');
               setError(null);
             }}
-            className={`flex-1 py-2 px-2 text-center font-semibold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-1.5 sm:px-2 text-center font-semibold rounded-lg transition-all cursor-pointer leading-tight ${
               authMethod === 'sso'
                 ? 'bg-[#0F2A4A] text-white shadow-sm'
                 : 'text-slate-600 hover:text-[#0F1E36]'
@@ -280,7 +280,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               setAuthMethod('credentials');
               setError(null);
             }}
-            className={`flex-1 py-2 px-2 text-center font-semibold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-1.5 sm:px-2 text-center font-semibold rounded-lg transition-all cursor-pointer leading-tight ${
               authMethod === 'credentials'
                 ? 'bg-[#0F2A4A] text-white shadow-sm'
                 : 'text-slate-600 hover:text-[#0F1E36]'
@@ -294,7 +294,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               setAuthMethod('magic');
               setError(null);
             }}
-            className={`flex-1 py-2 px-2 text-center font-semibold rounded-lg transition-all cursor-pointer ${
+            className={`flex-1 py-2 px-1.5 sm:px-2 text-center font-semibold rounded-lg transition-all cursor-pointer leading-tight ${
               authMethod === 'magic'
                 ? 'bg-[#0F2A4A] text-white shadow-sm'
                 : 'text-slate-600 hover:text-[#0F1E36]'
@@ -368,13 +368,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <p className="text-[10px] text-slate-600">
                 Enter your firm domain to route through your organization's identity provider.
               </p>
-              <div className="flex gap-2">
+              <div className="flex flex-col sm:flex-row gap-2">
                 <input
                   type="text"
                   placeholder="e.g. vancestirlinglaw.com"
                   value={ssoDomain}
                   onChange={(e) => setSsoDomain(e.target.value)}
-                  className="flex-1 px-3 py-2 bg-white border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] text-xs"
+                  className="flex-1 min-w-0 px-3 py-2 bg-white border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] text-xs"
                 />
                 <button
                   type="submit"
@@ -576,8 +576,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <div className="space-y-3 text-xs">
                 <div className="p-3 bg-[#FDF8F0] border border-[#E6D7BE] rounded-xl space-y-1">
                   <div className="font-semibold text-[#0F2A4A]">Magic Code Dispatched!</div>
-                  <p className="text-[11px] text-slate-700">
-                    A single-use verification code was transmitted to <strong className="text-[#0F1E36]">{magicEmail}</strong>.
+                  <p className="text-[11px] text-slate-700 break-words">
+                    A single-use verification code was transmitted to <strong className="text-[#0F1E36] break-all sm:break-normal">{magicEmail}</strong>.
                   </p>
                 </div>
 

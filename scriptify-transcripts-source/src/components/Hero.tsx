@@ -276,14 +276,14 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample }) => {
             </p>
 
             {/* Primary & Secondary Actions */}
-            <div className="flex flex-wrap items-center gap-3.5 pt-1">
+            <div className="flex flex-wrap items-center gap-3 pt-1">
               <button
                 onClick={onOpenPortal}
-                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-xs sm:text-sm font-semibold text-white bg-[#0F2A4A] rounded-lg hover:bg-[#173B66] transition-colors shadow-sm whitespace-nowrap cursor-pointer"
+                className="inline-flex items-center justify-center gap-2.5 px-5 sm:px-6 py-3.5 text-xs sm:text-sm font-semibold text-white bg-[#0F2A4A] rounded-lg hover:bg-[#173B66] transition-colors shadow-sm cursor-pointer w-full sm:w-auto"
               >
-                <FileText className="w-4 h-4" />
+                <FileText className="w-4 h-4 shrink-0" />
                 <span>Start Transcript Order</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </button>
 
               <button
@@ -291,9 +291,9 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample }) => {
                   onSelectSample('legal');
                   onOpenPortal();
                 }}
-                className="inline-flex items-center gap-2 px-5 py-3.5 text-xs sm:text-sm font-semibold text-[#0F2A4A] bg-white border border-[#D4CFC4] rounded-lg hover:border-[#0F2A4A] hover:bg-[#FAF8F4] transition-colors whitespace-nowrap cursor-pointer shadow-xs"
+                className="inline-flex items-center justify-center gap-2 px-5 py-3.5 text-xs sm:text-sm font-semibold text-[#0F2A4A] bg-white border border-[#D4CFC4] rounded-lg hover:border-[#0F2A4A] hover:bg-[#FAF8F4] transition-colors cursor-pointer shadow-xs w-full sm:w-auto"
               >
-                <Scale className="w-4 h-4 text-[#9A6B2F]" />
+                <Scale className="w-4 h-4 text-[#9A6B2F] shrink-0" />
                 <span>Open Courtroom Editor</span>
               </button>
             </div>
@@ -361,11 +361,11 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample }) => {
 
               {/* Exhibit Header Info */}
               <div className="px-4 py-3 bg-white border-b border-[#E2DED5] flex items-center justify-between text-xs gap-2">
-                <div className="space-y-0.5 max-w-[260px] truncate">
+                <div className="space-y-0.5 min-w-0 flex-1">
                   <div className="text-[#0F1E36] font-bold truncate text-xs">
                     {currentSample.title}
                   </div>
-                  <div className="text-[11px] text-[#9A6B2F] font-medium">
+                  <div className="text-[11px] text-[#9A6B2F] font-medium truncate">
                     {currentSample.badge}
                   </div>
                 </div>
@@ -414,7 +414,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample }) => {
                 </div>
 
                 {/* Audio Controls Bar */}
-                <div className="flex items-center justify-between gap-3 pt-0.5">
+                <div className="flex flex-wrap items-center justify-between gap-3 pt-0.5">
                   <div className="flex items-center gap-2.5">
                     <button
                       onClick={togglePlay}

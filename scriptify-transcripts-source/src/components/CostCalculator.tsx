@@ -57,9 +57,9 @@ export const CostCalculator: React.FC<CostCalculatorProps> = ({ onOpenQuoteWithE
           <div className="lg:col-span-7 space-y-8">
             {/* Minutes Slider */}
             <div className="space-y-4">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className="text-sm font-bold text-[#0F1E36]">Audio Recording Length</span>
-                <span className="font-mono text-2xl font-bold text-[#0F2A4A] tabular-nums">
+                <span className="font-mono text-xl sm:text-2xl font-bold text-[#0F2A4A] tabular-nums">
                   {minutes} Minutes{' '}
                   <span className="text-xs text-slate-500 font-sans font-normal">
                     ({(minutes / 60).toFixed(1)} hrs)
@@ -75,10 +75,10 @@ export const CostCalculator: React.FC<CostCalculatorProps> = ({ onOpenQuoteWithE
                 onChange={(e) => setMinutes(Number(e.target.value))}
                 className="w-full h-2 bg-[#E2DED5] rounded-lg appearance-none cursor-pointer accent-[#0F2A4A]"
               />
-              <div className="flex justify-between text-[11px] text-slate-500 font-mono">
-                <span>10 mins (Brief Hearing)</span>
+              <div className="flex flex-wrap justify-between gap-2 text-[10px] sm:text-[11px] text-slate-500 font-mono">
+                <span>10 mins (Brief)</span>
                 <span>60 mins (Standard Depo)</span>
-                <span>300 mins (Full Trial Day)</span>
+                <span>300 mins (Trial Day)</span>
               </div>
             </div>
 
@@ -157,15 +157,15 @@ export const CostCalculator: React.FC<CostCalculatorProps> = ({ onOpenQuoteWithE
               <span className="text-xs text-slate-500 uppercase tracking-wider block font-semibold">
                 Scriptify Estimate
               </span>
-              <div className="flex items-baseline gap-3">
-                <span className="font-serif text-4xl font-bold text-[#0F2A4A] tabular-nums">
+              <div className="flex flex-wrap items-baseline gap-2 sm:gap-3">
+                <span className="font-serif text-3xl sm:text-4xl font-bold text-[#0F2A4A] tabular-nums">
                   ${total.toFixed(2)}
                 </span>
                 <span className="text-xs text-slate-500 font-mono line-through tabular-nums">
                   ${marketTotal.toFixed(2)} (Legacy Bureau)
                 </span>
               </div>
-              <div className="text-xs text-slate-600 pt-1 font-mono">
+              <div className="text-xs text-slate-600 pt-1 font-mono break-words">
                 {breakdownText}
               </div>
             </div>

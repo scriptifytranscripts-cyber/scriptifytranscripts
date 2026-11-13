@@ -47,16 +47,16 @@ export const ContactModal: React.FC<ContactModalProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 bg-[#0F1E36]/45 backdrop-blur-sm flex items-center justify-center p-4"
+      className="fixed inset-0 z-50 bg-[#0F1E36]/45 backdrop-blur-sm flex items-center justify-center p-2.5 sm:p-4 overflow-y-auto overflow-x-hidden"
       onClick={onClose}
     >
       <div
-        className="bg-white border border-[#D4CFC4] rounded-2xl max-w-lg w-full p-6 md:p-8 relative shadow-2xl space-y-6 text-[#0F1E36]"
+        className="bg-white border border-[#D4CFC4] rounded-xl sm:rounded-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto overflow-x-hidden min-w-0 p-5 sm:p-6 md:p-8 relative shadow-2xl my-auto space-y-6 text-[#0F1E36]"
         onClick={(e) => e.stopPropagation()}
       >
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 p-1.5 text-slate-500 hover:text-[#0F1E36] rounded-lg hover:bg-[#F2EFE9] transition-colors cursor-pointer"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-1.5 text-slate-500 hover:text-[#0F1E36] rounded-lg hover:bg-[#F2EFE9] transition-colors cursor-pointer"
           aria-label="Close quote modal"
         >
           <X className="w-5 h-5" />
@@ -64,7 +64,7 @@ export const ContactModal: React.FC<ContactModalProps> = ({
 
         {!isSubmitted ? (
           <form onSubmit={handleSubmit} className="space-y-5">
-            <div className="space-y-1.5">
+            <div className="space-y-1.5 pr-8">
               <div className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#9A6B2F] uppercase tracking-wider">
                 <Lock className="w-3.5 h-3.5" />
                 <span>Scriptify Transcripts · Quote Request</span>
@@ -150,8 +150,8 @@ export const ContactModal: React.FC<ContactModalProps> = ({
               <span>Submit Quote Request</span>
             </button>
 
-            <div className="flex items-center justify-center gap-1.5 text-[11px] text-slate-600 pt-1">
-              <MapPin className="w-3.5 h-3.5 text-[#9A6B2F]" />
+            <div className="flex flex-wrap items-center justify-center gap-1.5 text-[11px] text-slate-600 pt-1 text-center">
+              <MapPin className="w-3.5 h-3.5 text-[#9A6B2F] shrink-0" />
               <span>US Office: 30 N Gould St, STE R, Sheridan, WY 82801</span>
             </div>
           </form>

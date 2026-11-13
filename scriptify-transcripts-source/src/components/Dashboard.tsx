@@ -386,7 +386,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-6 py-10 space-y-8">
+    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 space-y-8">
       {/* Client Authentication & Organization Status Bar */}
       {currentUser ? (
         <div className="p-4 sm:p-5 rounded-xl bg-white border border-[#E2DED5] shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
@@ -478,7 +478,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
       {/* If Authenticated and viewing Matter Archives */}
       {activeTab === 'archive' && currentUser ? (
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-[#E2DED5] pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E2DED5] pb-4">
             <div>
               <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#0F1E36] tracking-tight">
                 Active Case Matters & Certified Deliverables
@@ -604,7 +604,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             <div className="space-y-8">
               {/* Ingestion & Privacy Directives Bar */}
               <div className="bg-white border border-[#E2DED5] rounded-xl p-5 shadow-sm space-y-4">
-                <div className="flex items-center justify-between border-b border-[#E2DED5] pb-3">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-[#E2DED5] pb-3">
                   <div className="flex items-center gap-2">
                     <Sliders className="w-4 h-4 text-[#0F2A4A]" />
                     <span className="text-xs font-semibold text-[#0F1E36] uppercase tracking-wider">
@@ -787,7 +787,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
               {/* Preloaded Sample Audio Demos */}
               <div className="space-y-4 pt-4">
-                <div className="flex items-center justify-between">
+                <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="text-xs font-semibold text-[#0F1E36] uppercase tracking-wider">
                     Or Test with Courtroom & Enterprise Presets:
                   </div>

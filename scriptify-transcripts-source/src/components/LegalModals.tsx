@@ -37,28 +37,28 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 bg-[#0F1E36]/45 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-50 bg-[#0F1E36]/45 backdrop-blur-sm flex items-center justify-center p-2.5 sm:p-6 overflow-y-auto overflow-x-hidden"
       onClick={onClose}
     >
       <div
-        className="bg-white border border-[#D4CFC4] rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl relative my-auto overflow-hidden text-[#0F1E36]"
+        className="bg-white border border-[#D4CFC4] rounded-xl sm:rounded-2xl max-w-4xl w-full max-h-[92vh] flex flex-col min-w-0 shadow-2xl relative my-auto overflow-hidden text-[#0F1E36]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header & Tab Navigation */}
-        <div className="border-b border-[#E2DED5] bg-[#FAF8F4] p-5 sm:p-6 pb-0 flex flex-col gap-4">
-          <div className="flex items-center justify-between gap-4">
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-white border border-[#E2DED5] flex items-center justify-center text-[#0F2A4A]">
-                {activeType === 'privacy' && <Lock className="w-5 h-5" />}
-                {activeType === 'terms' && <FileText className="w-5 h-5" />}
-                {activeType === 'confidentiality' && <ShieldCheck className="w-5 h-5" />}
-                {activeType === 'invoicing' && <Building2 className="w-5 h-5" />}
+        <div className="border-b border-[#E2DED5] bg-[#FAF8F4] p-4 sm:p-6 pb-3 sm:pb-0 flex flex-col gap-3 sm:gap-4 shrink-0">
+          <div className="flex items-start sm:items-center justify-between gap-2.5 sm:gap-4">
+            <div className="flex items-start sm:items-center gap-2.5 sm:gap-3 min-w-0 flex-1">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg bg-white border border-[#E2DED5] flex items-center justify-center text-[#0F2A4A] shrink-0">
+                {activeType === 'privacy' && <Lock className="w-4 h-4 sm:w-5 sm:h-5" />}
+                {activeType === 'terms' && <FileText className="w-4 h-4 sm:w-5 sm:h-5" />}
+                {activeType === 'confidentiality' && <ShieldCheck className="w-4 h-4 sm:w-5 sm:h-5" />}
+                {activeType === 'invoicing' && <Building2 className="w-4 h-4 sm:w-5 sm:h-5" />}
               </div>
-              <div>
-                <span className="text-[11px] font-mono uppercase tracking-wider text-[#9A6B2F] font-semibold block">
+              <div className="min-w-0 flex-1">
+                <span className="text-[10px] sm:text-[11px] font-mono uppercase tracking-wider text-[#9A6B2F] font-semibold block break-words">
                   Scriptify Transcripts · Compliance & Governance
                 </span>
-                <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#0F1E36] tracking-tight">
+                <h2 className="font-serif text-lg sm:text-2xl font-bold text-[#0F1E36] tracking-tight leading-snug break-words">
                   {activeType === 'privacy' && 'Privacy Charter & Zero-Data Retention'}
                   {activeType === 'terms' && 'Terms of Service & Turnaround SLA'}
                   {activeType === 'confidentiality' && 'Confidentiality Guarantee & Bilateral NDA'}
@@ -69,60 +69,60 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
 
             <button
               onClick={onClose}
-              className="p-2 text-slate-500 hover:text-[#0F1E36] rounded-lg hover:bg-[#F2EFE9] transition-colors cursor-pointer"
+              className="p-2 text-slate-500 hover:text-[#0F1E36] rounded-lg hover:bg-[#F2EFE9] transition-colors cursor-pointer shrink-0"
               aria-label="Close dialog"
             >
               <X className="w-5 h-5" />
             </button>
           </div>
 
-          {/* Tab Selector */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-2">
+          {/* Tab Selector: Clean 2x2 grid on mobile (no horizontal scroll), inline editorial tabs on sm+ */}
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-stretch gap-1.5 sm:gap-2 pt-1 sm:pt-2">
             <button
               onClick={() => onSelectType('privacy')}
-              className={`px-3.5 py-2.5 text-xs font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${
+              className={`px-2.5 sm:px-3.5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-semibold rounded-lg sm:rounded-none border sm:border-0 sm:border-b-2 transition-all text-center cursor-pointer ${
                 activeType === 'privacy'
-                  ? 'border-[#0F2A4A] text-[#0F2A4A]'
-                  : 'border-transparent text-slate-600 hover:text-[#0F1E36]'
+                  ? 'bg-[#0F2A4A] text-white border-[#0F2A4A] sm:bg-transparent sm:border-[#0F2A4A] sm:text-[#0F2A4A]'
+                  : 'bg-white text-slate-600 border-[#E2DED5] hover:text-[#0F1E36] sm:bg-transparent sm:border-transparent'
               }`}
             >
               Privacy Charter
             </button>
             <button
               onClick={() => onSelectType('terms')}
-              className={`px-3.5 py-2.5 text-xs font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${
+              className={`px-2.5 sm:px-3.5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-semibold rounded-lg sm:rounded-none border sm:border-0 sm:border-b-2 transition-all text-center cursor-pointer ${
                 activeType === 'terms'
-                  ? 'border-[#0F2A4A] text-[#0F2A4A]'
-                  : 'border-transparent text-slate-600 hover:text-[#0F1E36]'
+                  ? 'bg-[#0F2A4A] text-white border-[#0F2A4A] sm:bg-transparent sm:border-[#0F2A4A] sm:text-[#0F2A4A]'
+                  : 'bg-white text-slate-600 border-[#E2DED5] hover:text-[#0F1E36] sm:bg-transparent sm:border-transparent'
               }`}
             >
               Terms of Service
             </button>
             <button
               onClick={() => onSelectType('confidentiality')}
-              className={`px-3.5 py-2.5 text-xs font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${
+              className={`px-2.5 sm:px-3.5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-semibold rounded-lg sm:rounded-none border sm:border-0 sm:border-b-2 transition-all text-center cursor-pointer ${
                 activeType === 'confidentiality'
-                  ? 'border-[#0F2A4A] text-[#0F2A4A]'
-                  : 'border-transparent text-slate-600 hover:text-[#0F1E36]'
+                  ? 'bg-[#0F2A4A] text-white border-[#0F2A4A] sm:bg-transparent sm:border-[#0F2A4A] sm:text-[#0F2A4A]'
+                  : 'bg-white text-slate-600 border-[#E2DED5] hover:text-[#0F1E36] sm:bg-transparent sm:border-transparent'
               }`}
             >
               Confidentiality & NDA
             </button>
             <button
               onClick={() => onSelectType('invoicing')}
-              className={`px-3.5 py-2.5 text-xs font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${
+              className={`px-2.5 sm:px-3.5 py-2 sm:py-2.5 text-[11px] sm:text-xs font-semibold rounded-lg sm:rounded-none border sm:border-0 sm:border-b-2 transition-all text-center cursor-pointer ${
                 activeType === 'invoicing'
-                  ? 'border-[#0F2A4A] text-[#0F2A4A]'
-                  : 'border-transparent text-slate-600 hover:text-[#0F1E36]'
+                  ? 'bg-[#0F2A4A] text-white border-[#0F2A4A] sm:bg-transparent sm:border-[#0F2A4A] sm:text-[#0F2A4A]'
+                  : 'bg-white text-slate-600 border-[#E2DED5] hover:text-[#0F1E36] sm:bg-transparent sm:border-transparent'
               }`}
             >
-              US Invoicing (Wyoming)
+              US Invoicing (WY)
             </button>
           </div>
         </div>
 
         {/* Scrollable Body Content */}
-        <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-xs sm:text-sm text-slate-700 leading-relaxed max-h-[calc(90vh-190px)]">
+        <div className="p-4 sm:p-8 flex-1 min-h-0 overflow-y-auto overflow-x-hidden space-y-6 text-xs sm:text-sm text-slate-700 leading-relaxed break-words">
           {/* TAB 1: PRIVACY CHARTER */}
           {activeType === 'privacy' && (
             <div className="space-y-6">
@@ -329,12 +329,12 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
           {activeType === 'invoicing' && (
             <div className="space-y-6">
               <div className="p-4 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                <div className="space-y-1">
+                <div className="space-y-1 min-w-0">
                   <div className="text-[#0F1E36] font-bold flex items-center gap-1.5">
-                    <MapPin className="w-4 h-4 text-[#9A6B2F]" />
+                    <MapPin className="w-4 h-4 text-[#9A6B2F] shrink-0" />
                     <span>Official US Business Headquarters</span>
                   </div>
-                  <div className="text-slate-600 font-mono">
+                  <div className="text-slate-600 font-mono break-words">
                     30 N Gould St, STE R, Sheridan, WY 82801, United States
                   </div>
                 </div>
@@ -343,7 +343,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                     onClose();
                     onRequestQuoteOrNDA('Form W-9 & Vendor Onboarding Packet Request');
                   }}
-                  className="px-3.5 py-2 bg-[#0F2A4A] hover:bg-[#173B66] text-white font-semibold text-xs rounded-lg cursor-pointer whitespace-nowrap self-start sm:self-auto transition-colors"
+                  className="px-3.5 py-2 bg-[#0F2A4A] hover:bg-[#173B66] text-white font-semibold text-xs rounded-lg cursor-pointer self-start sm:self-auto transition-colors shrink-0"
                 >
                   Request Form W-9
                 </button>
@@ -422,12 +422,12 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                   <span className="text-[#9A6B2F] font-mono text-xs">04.</span>
                   Corporate Remittance Address
                 </h3>
-                <div className="p-3.5 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] font-mono text-xs space-y-1 text-slate-700">
+                <div className="p-3.5 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] font-mono text-xs space-y-1 text-slate-700 break-words">
                   <div className="text-[#0F1E36] font-bold">Scriptify Transcripts</div>
                   <div>Accounts Receivable / Vendor Relations</div>
                   <div>30 N Gould St, STE R</div>
                   <div>Sheridan, WY 82801, United States</div>
-                  <div className="text-[#0F2A4A] font-semibold pt-1">Email: contact@scriptifytranscripts.com</div>
+                  <div className="text-[#0F2A4A] font-semibold pt-1 break-all sm:break-normal">Email: contact@scriptifytranscripts.com</div>
                 </div>
               </div>
             </div>
@@ -435,13 +435,13 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
         </div>
 
         {/* Modal Footer Controls */}
-        <div className="p-4 sm:p-5 border-t border-[#E2DED5] bg-[#FAF8F4] flex flex-wrap items-center justify-between gap-3 text-xs">
+        <div className="p-4 sm:p-5 border-t border-[#E2DED5] bg-[#FAF8F4] flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs shrink-0">
           <div className="flex items-center gap-2 text-slate-600">
-            <Lock className="w-3.5 h-3.5 text-emerald-700" />
+            <Lock className="w-3.5 h-3.5 text-emerald-700 shrink-0" />
             <span>Official US Corporate Governance · Scriptify Transcripts</span>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3">
             <button
               onClick={() => {
                 onClose();
