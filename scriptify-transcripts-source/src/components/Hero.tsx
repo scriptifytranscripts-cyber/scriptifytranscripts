@@ -16,7 +16,6 @@ import {
 } from 'lucide-react';
 import { formatTime } from '../utils/audioHelper';
 import legalCourtroomBg from '../assets/images/legal_courtroom_deposition_1794485479232.jpg';
-import legalDocketSample from '../assets/images/legal_trial_transcripts_1794485493654.jpg';
 
 interface HeroProps {
   onOpenPortal: () => void;
@@ -24,7 +23,7 @@ interface HeroProps {
   onOpenQuote: () => void;
 }
 
-export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpenQuote }) => {
+export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample }) => {
   // Audio playback state
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(8.5);
@@ -39,30 +38,24 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
   const gainRef = useRef<GainNode | null>(null);
   const timerRef = useRef<number | null>(null);
 
-  // 56 Amplitude bars accurately shaped to mirror the bidirectional waveform in image_ab8ea65a.png:
-  // Starts modest, swells into first peak, dips in the middle, surges into high red crest, and tapers on the right.
+  // 56 Amplitude bars mirroring the bidirectional waveform shape
   const waveformAmplitudes = [
     22, 38, 55, 68, 50, 32, 24, 42, 60, 72, 85, 65, 48, 38, 52, 70, 88, 96, 78, 62,
     45, 68, 82, 94, 98, 76, 58, 42, 60, 74, 86, 92, 84, 68, 54, 76, 92, 100, 88, 70,
     52, 72, 86, 94, 80, 64, 46, 34, 48, 62, 50, 36, 28, 20, 16, 12
   ];
 
-  // Colors accurately mapping to image_ab8ea65a.png:
-  // Left: Magenta / Purple (#d946ef) -> Center-left: Royal Blue (#3b82f6) -> Center-right: Vivid Red (#ef4444) -> Right: Dusky Slate (#64748b)
+  // Editorial multi-hue spectrum calibrated cleanly for archival light canvas
   const getBarColor = (index: number, total: number) => {
     const ratio = index / total;
     if (ratio < 0.22) {
-      // Magenta / Violet spectrum
-      return '#d946ef';
+      return '#9333ea'; // Royal Plum / Magenta
     } else if (ratio < 0.48) {
-      // Royal Azure Blue spectrum
-      return '#3b82f6';
+      return '#1d4ed8'; // Judicial Cobalt Blue
     } else if (ratio < 0.76) {
-      // Vivid Crimson Red spectrum
-      return '#ef4444';
+      return '#dc2626'; // Docket Crimson
     } else {
-      // Dusky Slate / Charcoal spectrum
-      return '#64748b';
+      return '#64748b'; // Archival Slate
     }
   };
 
@@ -106,7 +99,7 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
           start: 0,
           end: 18,
           speaker: 'Chief Financial Officer (Marcus Lind)',
-          text: 'Operating margins expanded 240 basis points year-over-year, driven primarily by enterprise SaaS recurring revenues and streamlined vendor procurement.',
+          text: 'Operating margins expanded 240 basis points year-over-year, driven primarily by enterprise recurring revenues and streamlined vendor procurement.',
         },
         {
           start: 18,
@@ -153,7 +146,6 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
     currentSample.dialogue.find((seg) => currentTime >= seg.start && currentTime < seg.end) ||
     currentSample.dialogue[0];
 
-  // Play audio loop
   const togglePlay = () => {
     if (isPlaying) {
       pauseAudio();
@@ -245,8 +237,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
   }, []);
 
   return (
-    <section id="hero" className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-24">
-      {/* Authentic Legal Transcription Background - Clearly visible courtroom proceedings */}
+    <section id="hero" className="relative overflow-hidden pt-10 pb-16 md:pt-16 md:pb-24 bg-[#FAF8F4] border-b border-[#E2DED5]">
+      {/* Authentic Legal Courtroom Background with Warm Parchment Scrim */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <img
           src={legalCourtroomBg}
@@ -254,43 +246,40 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
             (e.currentTarget as HTMLImageElement).src = '/legal-bg.jpg';
           }}
           alt="Legal courtroom deposition and transcription proceedings"
-          className="w-full h-full object-cover object-center opacity-55 filter contrast-115 saturate-90"
+          className="w-full h-full object-cover object-center opacity-22 filter saturate-75 contrast-105"
         />
-        {/* Directional scrim: darker on left for text legibility, transparent on center/right for courtroom visibility */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/65" />
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
+        {/* Warm Alabaster Directional Scrim for high-contrast judicial legibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#FAF8F4] via-[#FAF8F4]/92 to-[#FAF8F4]/70" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#FAF8F4] via-transparent to-[#FAF8F4]/60" />
       </div>
 
-      {/* Ambient background glow matching the waveform gradient tones */}
-      <div className="absolute top-1/4 left-1/3 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-indigo-600/10 blur-[140px] rounded-full pointer-events-none z-0" />
-      <div className="absolute top-1/3 right-10 w-[500px] h-[320px] bg-rose-600/10 blur-[140px] rounded-full pointer-events-none z-0" />
-
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-          {/* Left Column: Comprehensive Transcription Positioning & Distinct CTAs */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-10 items-center">
+          {/* Left Column: Authoritative Legal Positioning & Clean Actions */}
           <div className="lg:col-span-7 space-y-6">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-xs font-semibold text-cyan-400">
-              <ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" />
-              <span>Accredited Legal, Corporate & Healthcare Audio Transcription</span>
+            <div className="flex items-center gap-2 text-xs font-semibold text-[#9A6B2F] tracking-wide">
+              <ShieldCheck className="w-4 h-4 text-[#0F2A4A] shrink-0" />
+              <span>Court-Certified Legal, Corporate & Clinical Audio Transcription</span>
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-[54px] font-extrabold text-white tracking-tight leading-[1.12] [text-wrap:balance]">
+            <h1 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-[52px] font-bold text-[#0F1E36] tracking-tight leading-[1.12] [text-wrap:balance]">
               Accurate. Certified. Verbatim.{' '}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-sky-300 to-blue-400">
-                Courtroom, corporate & clinical audio
+              <span className="text-[#0F2A4A] italic">
+                Courtroom, corporate & clinical records
               </span>{' '}
               at competitive rates.
             </h1>
 
-            <p className="text-sm sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl">
-              <strong className="text-white font-semibold">Scriptify Transcripts</strong> delivers court-certified litigation depositions, corporate executive briefings, and medical research audio transcription with 99.8% verbatim accuracy, zero-retention security, and predictable per-minute rates starting at <span className="text-cyan-400 font-bold">$1.45/minute</span>.
+            <p className="text-sm sm:text-base md:text-lg text-slate-700 leading-relaxed max-w-2xl">
+              <strong className="text-[#0F1E36] font-semibold">Scriptify Transcripts</strong> prepares court-certified litigation depositions, boardroom executive briefings, and medical research audio transcripts with 99.8% verbatim fidelity, zero-retention confidentiality, and predictable billing starting at{' '}
+              <span className="text-[#0F2A4A] font-bold tabular-nums">$1.45/minute</span>.
             </p>
 
-            {/* Distinctly Labeled Actions */}
+            {/* Primary & Secondary Actions */}
             <div className="flex flex-wrap items-center gap-3.5 pt-1">
               <button
                 onClick={onOpenPortal}
-                className="inline-flex items-center gap-2.5 px-5 sm:px-6 py-3.5 text-xs sm:text-sm font-bold text-slate-950 bg-cyan-400 rounded-xl hover:bg-cyan-300 hover:shadow-lg hover:shadow-cyan-500/25 transition-all whitespace-nowrap cursor-pointer"
+                className="inline-flex items-center gap-2.5 px-6 py-3.5 text-xs sm:text-sm font-semibold text-white bg-[#0F2A4A] rounded-lg hover:bg-[#173B66] transition-colors shadow-sm whitespace-nowrap cursor-pointer"
               >
                 <FileText className="w-4 h-4" />
                 <span>Start Transcript Order</span>
@@ -302,44 +291,44 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
                   onSelectSample('legal');
                   onOpenPortal();
                 }}
-                className="inline-flex items-center gap-2 px-4 sm:px-5 py-3.5 text-xs sm:text-sm font-semibold text-slate-200 bg-slate-900 border border-slate-700/80 rounded-xl hover:bg-slate-800 hover:text-white transition-colors whitespace-nowrap cursor-pointer"
+                className="inline-flex items-center gap-2 px-5 py-3.5 text-xs sm:text-sm font-semibold text-[#0F2A4A] bg-white border border-[#D4CFC4] rounded-lg hover:border-[#0F2A4A] hover:bg-[#FAF8F4] transition-colors whitespace-nowrap cursor-pointer shadow-xs"
               >
-                <Scale className="w-4 h-4 text-cyan-400" />
-                <span>Open Full Courtroom Editor</span>
+                <Scale className="w-4 h-4 text-[#9A6B2F]" />
+                <span>Open Courtroom Editor</span>
               </button>
             </div>
 
-            {/* Quiet Compliance & Location Strip */}
-            <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-slate-400">
-              <div className="flex items-center gap-1.5 text-emerald-400">
+            {/* Quiet Unboxed Compliance Metadata */}
+            <div className="flex flex-wrap items-center gap-3 pt-2 text-xs text-slate-600">
+              <div className="flex items-center gap-1.5 text-emerald-800 font-medium">
                 <Lock className="w-3.5 h-3.5" />
                 <span>Bilateral NDA & In-Memory Purging</span>
               </div>
               <span aria-hidden="true">·</span>
-              <span className="text-slate-300">Rule 30(b)(6) Formatting</span>
+              <span>Rule 30(b)(6) Formatting</span>
               <span aria-hidden="true">·</span>
-              <div className="flex items-center gap-1 text-slate-300">
-                <MapPin className="w-3.5 h-3.5 text-cyan-400" />
+              <div className="flex items-center gap-1">
+                <MapPin className="w-3.5 h-3.5 text-[#9A6B2F]" />
                 <span>30 N Gould St, Sheridan, WY</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Real Bidirectional Gradient Audio Waveform matching user's image */}
+          {/* Right Column: Bidirectional Gradient Audio Exhibit Console on Crisp Paper Sheet */}
           <div className="lg:col-span-5 relative">
-            <div className="relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900/95 shadow-2xl shadow-cyan-950/40">
-              {/* Domain Sample Switcher (Legal / Corporate / Clinical) */}
-              <div className="p-3.5 bg-slate-950 border-b border-slate-800/90 flex flex-wrap items-center justify-between gap-2 text-xs">
-                <span className="font-mono text-cyan-400 text-[11px] font-semibold uppercase tracking-wider">
-                  Live Waveform Sample:
+            <div className="relative rounded-xl overflow-hidden border border-[#D4CFC4] bg-white shadow-xl">
+              {/* Domain Sample Switcher */}
+              <div className="px-4 py-3 bg-[#F2EFE9] border-b border-[#E2DED5] flex flex-wrap items-center justify-between gap-2 text-xs">
+                <span className="text-[#0F1E36] text-xs font-semibold">
+                  Certified Audio Exhibit
                 </span>
-                <div className="flex items-center gap-1 bg-slate-900 rounded-lg p-0.5 border border-slate-800 text-[11px]">
+                <div className="flex items-center gap-1 bg-white rounded-lg p-0.5 border border-[#D4CFC4] text-[11px]">
                   <button
                     onClick={() => setActiveSampleType('legal')}
-                    className={`px-2.5 py-1 rounded transition-colors cursor-pointer flex items-center gap-1 ${
+                    className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1 font-medium ${
                       activeSampleType === 'legal'
-                        ? 'bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/40'
-                        : 'text-slate-400 hover:text-white'
+                        ? 'bg-[#0F2A4A] text-white'
+                        : 'text-slate-600 hover:text-[#0F2A4A]'
                     }`}
                   >
                     <Scale className="w-3 h-3" />
@@ -347,10 +336,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
                   </button>
                   <button
                     onClick={() => setActiveSampleType('corporate')}
-                    className={`px-2.5 py-1 rounded transition-colors cursor-pointer flex items-center gap-1 ${
+                    className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1 font-medium ${
                       activeSampleType === 'corporate'
-                        ? 'bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/40'
-                        : 'text-slate-400 hover:text-white'
+                        ? 'bg-[#0F2A4A] text-white'
+                        : 'text-slate-600 hover:text-[#0F2A4A]'
                     }`}
                   >
                     <Briefcase className="w-3 h-3" />
@@ -358,10 +347,10 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
                   </button>
                   <button
                     onClick={() => setActiveSampleType('clinical')}
-                    className={`px-2.5 py-1 rounded transition-colors cursor-pointer flex items-center gap-1 ${
+                    className={`px-2.5 py-1 rounded-md transition-colors cursor-pointer flex items-center gap-1 font-medium ${
                       activeSampleType === 'clinical'
-                        ? 'bg-cyan-500/20 text-cyan-300 font-semibold border border-cyan-500/40'
-                        : 'text-slate-400 hover:text-white'
+                        ? 'bg-[#0F2A4A] text-white'
+                        : 'text-slate-600 hover:text-[#0F2A4A]'
                     }`}
                   >
                     <GraduationCap className="w-3 h-3" />
@@ -370,36 +359,32 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
                 </div>
               </div>
 
-              {/* Sample Header Info */}
-              <div className="px-4 py-3 bg-slate-900 border-b border-slate-800/60 flex items-center justify-between text-xs">
+              {/* Exhibit Header Info */}
+              <div className="px-4 py-3 bg-white border-b border-[#E2DED5] flex items-center justify-between text-xs gap-2">
                 <div className="space-y-0.5 max-w-[260px] truncate">
-                  <div className="text-white font-bold truncate text-[11px] sm:text-xs">
+                  <div className="text-[#0F1E36] font-bold truncate text-xs">
                     {currentSample.title}
                   </div>
-                  <div className="text-[10px] text-cyan-400 font-mono">
+                  <div className="text-[11px] text-[#9A6B2F] font-medium">
                     {currentSample.badge}
                   </div>
                 </div>
-                <div className="px-2 py-0.5 rounded bg-emerald-950/70 border border-emerald-500/30 text-emerald-400 font-mono text-[10px] font-bold shrink-0">
+                <span className="text-emerald-800 font-mono text-[11px] font-semibold shrink-0 tabular-nums">
                   99.8% Verbatim
-                </div>
+                </span>
               </div>
 
-              {/* The Real Bidirectional Gradient Audio Waveform Display matching user's image */}
-              <div className="p-4 sm:p-5 space-y-4 bg-slate-950">
-                {/* Waveform Canvas Container with soft ambient glow */}
+              {/* Bidirectional Gradient Audio Waveform Display */}
+              <div className="p-4 sm:p-5 space-y-4 bg-white">
                 <div
                   onClick={handleWaveformClick}
-                  className="relative h-28 sm:h-32 flex items-center justify-between gap-[2px] sm:gap-[3px] px-3.5 rounded-xl border border-slate-800 cursor-pointer overflow-hidden group transition-all"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(59, 130, 246, 0.08) 50%, rgba(239, 68, 68, 0.08) 100%)',
-                  }}
+                  className="relative h-28 sm:h-32 flex items-center justify-between gap-[2px] sm:gap-[3px] px-3.5 rounded-lg border border-[#E2DED5] bg-[#FAF8F4] cursor-pointer overflow-hidden group transition-colors hover:border-[#0F2A4A]/40"
                   title="Click anywhere on the waveform to seek"
                 >
-                  {/* Subtle horizontal center line / zero baseline */}
-                  <div className="absolute inset-x-0 top-1/2 h-[1px] bg-slate-800/50 pointer-events-none" />
+                  {/* Horizontal zero-crossing baseline */}
+                  <div className="absolute inset-x-0 top-1/2 h-[1px] bg-[#D4CFC4] pointer-events-none" />
 
-                  {/* Symmetrical Dual-Sided Vertical Amplitude Bars with Exact Gradient Spectrum */}
+                  {/* Symmetrical Dual-Sided Vertical Amplitude Bars */}
                   {waveformAmplitudes.map((amp, idx) => {
                     const barTime = (idx / waveformAmplitudes.length) * duration;
                     const isPlayed = barTime <= currentTime;
@@ -412,9 +397,8 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
                         style={{
                           height: `${amp}%`,
                           backgroundColor: color,
-                          opacity: isPlayed ? 1 : 0.45,
-                          boxShadow: isPlayed ? `0 0 8px ${color}80` : 'none',
-                          transform: isPlaying && isPlayed ? 'scaleY(1.08)' : 'scaleY(1)',
+                          opacity: isPlayed ? 0.95 : 0.35,
+                          transform: isPlaying && isPlayed ? 'scaleY(1.06)' : 'scaleY(1)',
                         }}
                       />
                     );
@@ -422,19 +406,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
 
                   {/* Playhead Scrubber Line */}
                   <div
-                    className="absolute top-0 bottom-0 w-0.5 bg-white shadow-xl pointer-events-none transition-all duration-75"
+                    className="absolute top-0 bottom-0 w-0.5 bg-[#0F1E36] pointer-events-none transition-all duration-75"
                     style={{ left: `${(currentTime / duration) * 100}%` }}
                   >
-                    <div className="w-2.5 h-2.5 rounded-full bg-cyan-400 -ml-1 -mt-1 shadow-md ring-2 ring-white/50" />
+                    <div className="w-2.5 h-2.5 rounded-full bg-[#0F2A4A] -ml-1 -mt-0.5 ring-2 ring-white shadow-sm" />
                   </div>
                 </div>
 
                 {/* Audio Controls Bar */}
-                <div className="flex items-center justify-between gap-3 pt-1">
+                <div className="flex items-center justify-between gap-3 pt-0.5">
                   <div className="flex items-center gap-2.5">
                     <button
                       onClick={togglePlay}
-                      className="w-9 h-9 rounded-xl bg-cyan-400 hover:bg-cyan-300 text-slate-950 flex items-center justify-center transition-all shadow-md shadow-cyan-500/20 cursor-pointer"
+                      className="w-9 h-9 rounded-lg bg-[#0F2A4A] hover:bg-[#173B66] text-white flex items-center justify-center transition-colors shadow-xs cursor-pointer"
                       title={isPlaying ? 'Pause audio' : 'Play audio waveform'}
                       aria-label="Play or pause audio playback"
                     >
@@ -447,30 +431,30 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
 
                     <button
                       onClick={() => handleSeek(0)}
-                      className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-900 transition-colors cursor-pointer"
+                      className="p-1.5 text-slate-500 hover:text-[#0F2A4A] rounded-lg hover:bg-[#F2EFE9] transition-colors cursor-pointer"
                       title="Rewind to beginning"
                     >
                       <RotateCcw className="w-3.5 h-3.5" />
                     </button>
 
-                    <div className="text-xs font-mono text-slate-300 tabular-nums">
-                      <span className="text-cyan-400 font-semibold">{formatTime(currentTime)}</span>
-                      <span className="text-slate-600 mx-1">/</span>
-                      <span className="text-slate-400">{formatTime(duration)}</span>
+                    <div className="text-xs font-mono text-slate-600 tabular-nums">
+                      <span className="text-[#0F2A4A] font-semibold">{formatTime(currentTime)}</span>
+                      <span className="text-slate-400 mx-1">/</span>
+                      <span>{formatTime(duration)}</span>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2">
                     {/* Playback Speed selector */}
-                    <div className="flex bg-slate-900 rounded-lg p-0.5 border border-slate-800 text-[10px] font-mono">
+                    <div className="flex bg-[#F2EFE9] rounded-lg p-0.5 border border-[#E2DED5] text-[10px] font-mono">
                       {([1, 1.5, 2] as const).map((spd) => (
                         <button
                           key={spd}
                           onClick={() => setPlaybackSpeed(spd)}
-                          className={`px-1.5 py-0.5 rounded cursor-pointer ${
+                          className={`px-1.5 py-0.5 rounded cursor-pointer transition-colors ${
                             playbackSpeed === spd
-                              ? 'bg-cyan-400 text-slate-950 font-bold'
-                              : 'text-slate-400 hover:text-white'
+                              ? 'bg-[#0F2A4A] text-white font-bold'
+                              : 'text-slate-600 hover:text-[#0F2A4A]'
                           }`}
                         >
                           {spd}x
@@ -480,26 +464,25 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
 
                     <button
                       onClick={() => setIsMuted(!isMuted)}
-                      className="p-1.5 text-slate-400 hover:text-white rounded-lg hover:bg-slate-900 transition-colors cursor-pointer"
+                      className="p-1.5 text-slate-500 hover:text-[#0F2A4A] rounded-lg hover:bg-[#F2EFE9] transition-colors cursor-pointer"
                       title={isMuted ? 'Unmute' : 'Mute'}
                     >
-                      {isMuted ? <VolumeX className="w-4 h-4 text-rose-400" /> : <Volume2 className="w-4 h-4" />}
+                      {isMuted ? <VolumeX className="w-4 h-4 text-rose-700" /> : <Volume2 className="w-4 h-4" />}
                     </button>
                   </div>
                 </div>
 
-                {/* Synchronized Dialogue Snippet matching active timecode */}
-                <div className="p-3.5 rounded-xl bg-slate-900 border border-slate-800 text-xs space-y-1.5 transition-all">
-                  <div className="flex items-center justify-between text-[11px] font-mono">
-                    <span className="text-cyan-300 font-bold font-sans flex items-center gap-1.5">
-                      <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-ping" />
+                {/* Synchronized Dialogue Transcript Box */}
+                <div className="p-3.5 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-xs space-y-1.5">
+                  <div className="flex items-center justify-between text-[11px]">
+                    <span className="text-[#0F2A4A] font-bold">
                       {activeSegment.speaker}
                     </span>
-                    <span className="text-slate-400 tabular-nums">
+                    <span className="text-slate-500 font-mono tabular-nums">
                       {formatTime(activeSegment.start)} - {formatTime(activeSegment.end)}
                     </span>
                   </div>
-                  <p className="text-slate-200 leading-relaxed font-sans text-xs italic">
+                  <p className="text-slate-700 leading-relaxed text-xs italic font-serif">
                     "{activeSegment.text}"
                   </p>
                 </div>
@@ -508,27 +491,27 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
           </div>
         </div>
 
-        {/* 4-Column Proof Metric Strip with Realistic Competitive Pricing */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-slate-800/80 mt-12">
+        {/* 4-Column Proof Metric Strip */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-12 border-t border-[#E2DED5] mt-14">
           <div className="space-y-1">
-            <div className="text-2xl sm:text-3xl font-extrabold text-cyan-400 font-mono tabular-nums">99.8%</div>
-            <div className="text-xs text-slate-300 font-medium">Court-Grade & Enterprise Accuracy</div>
-            <div className="text-[11px] text-slate-400">Rule 30(b)(6) line-number certified</div>
+            <div className="font-serif text-2xl sm:text-3xl font-bold text-[#0F2A4A] tabular-nums">99.8%</div>
+            <div className="text-xs text-[#0F1E36] font-semibold">Court-Grade & Enterprise Accuracy</div>
+            <div className="text-[11px] text-slate-600">Rule 30(b)(6) line-number certified</div>
           </div>
           <div className="space-y-1">
-            <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono tabular-nums">$1.45/min</div>
-            <div className="text-xs text-slate-300 font-medium">Competitive US Market Pricing</div>
-            <div className="text-[11px] text-slate-400">Predictable per-minute billing</div>
+            <div className="font-serif text-2xl sm:text-3xl font-bold text-[#0F1E36] tabular-nums">$1.45/min</div>
+            <div className="text-xs text-[#0F1E36] font-semibold">Competitive Market Pricing</div>
+            <div className="text-[11px] text-slate-600">Predictable per-minute billing</div>
           </div>
           <div className="space-y-1">
-            <div className="text-2xl sm:text-3xl font-extrabold text-white font-mono tabular-nums">12h Rush</div>
-            <div className="text-xs text-slate-300 font-medium">Expedited Turnaround Options</div>
-            <div className="text-[11px] text-slate-400">Standard 48h, Next-Day 24h & Same-Day</div>
+            <div className="font-serif text-2xl sm:text-3xl font-bold text-[#0F1E36] tabular-nums">12h Rush</div>
+            <div className="text-xs text-[#0F1E36] font-semibold">Expedited Turnaround Options</div>
+            <div className="text-[11px] text-slate-600">Standard 48h, Next-Day 24h & Same-Day</div>
           </div>
           <div className="space-y-1">
-            <div className="text-2xl sm:text-3xl font-extrabold text-emerald-400 font-mono tabular-nums">AES-256</div>
-            <div className="text-xs text-slate-300 font-medium">Zero-Retention Privacy Charter</div>
-            <div className="text-[11px] text-slate-400">RAM-only buffer & Bilateral NDA</div>
+            <div className="font-serif text-2xl sm:text-3xl font-bold text-emerald-800 tabular-nums">AES-256</div>
+            <div className="text-xs text-[#0F1E36] font-semibold">Zero-Retention Privacy Charter</div>
+            <div className="text-[11px] text-slate-600">RAM-only buffer & Bilateral NDA</div>
           </div>
         </div>
       </div>

@@ -389,27 +389,27 @@ export const Dashboard: React.FC<DashboardProps> = ({
     <div className="max-w-7xl mx-auto px-6 py-10 space-y-8">
       {/* Client Authentication & Organization Status Bar */}
       {currentUser ? (
-        <div className="p-4 sm:p-5 rounded-2xl bg-slate-900 border border-slate-800 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="p-4 sm:p-5 rounded-xl bg-white border border-[#E2DED5] shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-center gap-3.5">
-            <div className="w-11 h-11 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+            <div className="w-11 h-11 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center shrink-0">
               <Building2 className="w-6 h-6" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-white font-bold text-sm sm:text-base">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[#0F1E36] font-bold text-sm sm:text-base">
                   {currentUser.organization}
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium flex items-center gap-1">
+                <span className="text-[11px] px-2.5 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold flex items-center gap-1">
                   <ShieldCheck className="w-3 h-3" />
                   Authenticated Client
                 </span>
               </div>
-              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400 mt-0.5">
-                <span>Contact: <strong className="text-slate-200">{currentUser.name}</strong></span>
-                <span>·</span>
-                <span className="font-mono text-cyan-400">{currentUser.matterRef || 'Matter #2026-CV-891'}</span>
-                <span>·</span>
-                <span className="text-emerald-400">{currentUser.ndaSignedDate || 'Active Bilateral NDA'}</span>
+              <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600 mt-1">
+                <span>Contact: <strong className="text-[#0F1E36]">{currentUser.name}</strong></span>
+                <span className="text-[#D4CFC4]">·</span>
+                <span className="font-mono text-[#0F2A4A] font-medium">{currentUser.matterRef || 'Matter #2026-CV-891'}</span>
+                <span className="text-[#D4CFC4]">·</span>
+                <span className="text-emerald-800 font-medium">{currentUser.ndaSignedDate || 'Active Bilateral NDA'}</span>
               </div>
             </div>
           </div>
@@ -419,8 +419,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
               onClick={() => setActiveTab('ingest')}
               className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-colors cursor-pointer flex-1 sm:flex-initial ${
                 activeTab === 'ingest'
-                  ? 'bg-cyan-400 text-slate-950 shadow-sm'
-                  : 'bg-slate-950 text-slate-300 hover:text-white border border-slate-800'
+                  ? 'bg-[#0F2A4A] text-white shadow-sm'
+                  : 'bg-[#FAF8F4] text-slate-700 hover:text-[#0F1E36] border border-[#D4CFC4]'
               }`}
             >
               Ingest Deposition
@@ -429,8 +429,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
               onClick={() => setActiveTab('archive')}
               className={`px-3.5 py-2 text-xs font-semibold rounded-lg transition-colors cursor-pointer flex-1 sm:flex-initial flex items-center justify-center gap-1.5 ${
                 activeTab === 'archive'
-                  ? 'bg-cyan-400 text-slate-950 shadow-sm'
-                  : 'bg-slate-950 text-slate-300 hover:text-white border border-slate-800'
+                  ? 'bg-[#0F2A4A] text-white shadow-sm'
+                  : 'bg-[#FAF8F4] text-slate-700 hover:text-[#0F1E36] border border-[#D4CFC4]'
               }`}
             >
               <FolderLock className="w-3.5 h-3.5" />
@@ -440,22 +440,22 @@ export const Dashboard: React.FC<DashboardProps> = ({
         </div>
       ) : (
         /* Unauthenticated Security Gate Banner */
-        <div className="p-4 sm:p-5 rounded-2xl bg-slate-900/80 border border-cyan-900/40 shadow-xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="p-4 sm:p-5 rounded-xl bg-white border border-[#E2DED5] border-l-4 border-l-[#0F2A4A] shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div className="flex items-start sm:items-center gap-3.5">
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0 mt-1 sm:mt-0">
+            <div className="w-10 h-10 rounded-lg bg-[#FDF8F0] border border-[#E6D7BE] text-[#9A6B2F] flex items-center justify-center shrink-0 mt-1 sm:mt-0">
               <Lock className="w-5 h-5" />
             </div>
             <div>
-              <div className="flex items-center gap-2">
-                <span className="text-white font-bold text-sm">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className="text-[#0F1E36] font-bold text-sm">
                   Enterprise Client Gate & Chain of Custody
                 </span>
-                <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-800 text-cyan-400 font-mono">
+                <span className="text-[10px] px-2 py-0.5 rounded bg-[#F2EFE9] border border-[#D4CFC4] text-[#0F2A4A] font-mono font-semibold">
                   Sandbox Active
                 </span>
               </div>
-              <p className="text-xs text-slate-300 mt-0.5 max-w-2xl leading-relaxed">
-                For proprietary legal depositions, HIPAA patient audio, and corporate board recordings, sign in to bind transcripts to your Case Docket Number, issue Net-30 US invoices, and execute our Wyoming Bilateral NDA.
+              <p className="text-xs text-slate-600 mt-1 max-w-2xl leading-relaxed">
+                For proprietary legal depositions, HIPAA patient audio, and corporate board recordings, sign in to bind transcripts to your Case Docket Number, issue Net-30 corporate invoices, and execute our Wyoming Bilateral NDA.
               </p>
             </div>
           </div>
@@ -466,7 +466,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 onClick={() =>
                   onRequireAuth('Sign in or register to access verified client dockets and bilateral NDA protection.')
                 }
-                className="px-4 py-2 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg transition-colors cursor-pointer whitespace-nowrap shadow-sm"
+                className="px-4 py-2.5 bg-[#0F2A4A] hover:bg-[#173B66] text-white font-semibold text-xs rounded-lg transition-colors cursor-pointer whitespace-nowrap shadow-sm"
               >
                 Sign In / Register Firm
               </button>
@@ -478,18 +478,18 @@ export const Dashboard: React.FC<DashboardProps> = ({
       {/* If Authenticated and viewing Matter Archives */}
       {activeTab === 'archive' && currentUser ? (
         <div className="space-y-6">
-          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+          <div className="flex items-center justify-between border-b border-[#E2DED5] pb-4">
             <div>
-              <h3 className="text-xl font-bold text-white tracking-tight">
+              <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#0F1E36] tracking-tight">
                 Active Case Matters & Certified Deliverables
               </h3>
-              <p className="text-xs text-slate-400 mt-0.5">
+              <p className="text-xs text-slate-600 mt-1">
                 All records formatted to Rule 30(b)(6) line-number standards with signed reporter attestations.
               </p>
             </div>
             <button
               onClick={() => setActiveTab('ingest')}
-              className="px-3.5 py-1.5 text-xs font-semibold text-cyan-400 bg-slate-900 border border-slate-800 rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
+              className="px-3.5 py-2 text-xs font-semibold text-[#0F2A4A] bg-white border border-[#D4CFC4] rounded-lg hover:bg-[#FAF8F4] transition-colors cursor-pointer"
             >
               + Ingest New Audio
             </button>
@@ -499,56 +499,55 @@ export const Dashboard: React.FC<DashboardProps> = ({
             {sampleClientMatters.map((matter) => (
               <div
                 key={matter.id}
-                className="p-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-slate-700 transition-all flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
+                className="p-5 rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A]/40 transition-all shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4"
               >
                 <div className="space-y-1.5 max-w-xl">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-mono font-bold text-cyan-400 bg-cyan-950/40 px-2 py-0.5 rounded border border-cyan-800/40">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-xs font-mono font-bold text-[#0F2A4A] bg-[#FAF8F4] px-2 py-0.5 rounded border border-[#D4CFC4]">
                       {matter.matterNumber}
                     </span>
-                    <span className="text-[11px] text-slate-400">{matter.date}</span>
-                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-medium">
+                    <span className="text-[11px] text-slate-500">{matter.date}</span>
+                    <span className="text-[10px] px-2 py-0.5 rounded bg-emerald-50 text-emerald-800 border border-emerald-200 font-semibold">
                       {matter.status}
                     </span>
                   </div>
-                  <h4 className="text-base font-bold text-white">{matter.title}</h4>
-                  <div className="flex flex-wrap items-center gap-3 text-xs text-slate-400">
-                    <span>Duration: <strong className="text-slate-200">{matter.durationMins} Mins</strong></span>
-                    <span>·</span>
-                    <span>Rate: <strong className="text-cyan-400 font-mono">${matter.ratePerMin.toFixed(2)}/min</strong></span>
-                    <span>·</span>
-                    <span>Invoice Total: <strong className="text-white font-mono">${matter.totalCost.toFixed(2)}</strong> (Net-30)</span>
-                    <span>·</span>
-                    <span className="text-emerald-400">{matter.accuracy}</span>
+                  <h4 className="text-base font-bold text-[#0F1E36]">{matter.title}</h4>
+                  <div className="flex flex-wrap items-center gap-3 text-xs text-slate-600">
+                    <span>Duration: <strong className="text-[#0F1E36]">{matter.durationMins} Mins</strong></span>
+                    <span className="text-[#D4CFC4]">·</span>
+                    <span>Rate: <strong className="text-[#0F2A4A] font-mono">${matter.ratePerMin.toFixed(2)}/min</strong></span>
+                    <span className="text-[#D4CFC4]">·</span>
+                    <span>Invoice Total: <strong className="text-[#0F1E36] font-mono">${matter.totalCost.toFixed(2)}</strong> (Net-30)</span>
+                    <span className="text-[#D4CFC4]">·</span>
+                    <span className="text-emerald-800 font-semibold">{matter.accuracy}</span>
                   </div>
                 </div>
 
                 <div className="flex flex-wrap items-center gap-2 self-stretch sm:self-auto">
                   <button
                     onClick={() => {
-                      // Trigger deposition sample for preview
                       handleTranscribeSample('legal');
                       setActiveTab('ingest');
                     }}
-                    className="px-3 py-2 text-xs font-semibold text-slate-200 bg-slate-950 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    className="px-3 py-2 text-xs font-semibold text-[#0F1E36] bg-[#FAF8F4] hover:bg-[#F2EFE9] rounded-lg border border-[#D4CFC4] transition-colors flex items-center gap-1.5 cursor-pointer"
                   >
-                    <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                    <FileText className="w-3.5 h-3.5 text-[#0F2A4A]" />
                     <span>View Transcript</span>
                   </button>
 
                   <a
                     href="/downloads/Scriptify_Transcripts_Official_Letterhead.docx"
                     download
-                    className="px-3 py-2 text-xs font-semibold text-slate-200 bg-slate-950 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer"
+                    className="px-3 py-2 text-xs font-semibold text-[#0F1E36] bg-[#FAF8F4] hover:bg-[#F2EFE9] rounded-lg border border-[#D4CFC4] transition-colors flex items-center gap-1.5 cursor-pointer"
                   >
-                    <Download className="w-3.5 h-3.5 text-emerald-400" />
+                    <Download className="w-3.5 h-3.5 text-emerald-700" />
                     <span>Certified .DOCX</span>
                   </a>
 
                   {onOpenLegal && (
                     <button
                       onClick={() => onOpenLegal('confidentiality')}
-                      className="px-3 py-2 text-xs font-semibold text-slate-400 hover:text-white bg-slate-950 hover:bg-slate-800 rounded-lg border border-slate-800 transition-colors cursor-pointer"
+                      className="px-3 py-2 text-xs font-semibold text-slate-600 hover:text-[#0F1E36] bg-white hover:bg-[#FAF8F4] rounded-lg border border-[#E2DED5] transition-colors cursor-pointer"
                       title="View Certificate of Certified Destruction"
                     >
                       Certificate of Destruction
@@ -563,16 +562,16 @@ export const Dashboard: React.FC<DashboardProps> = ({
         /* Regular Audio Ingestion & Result Console */
         <>
           {/* Dashboard Ingestion Header */}
-          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-slate-800 pb-4">
+          <div className="flex flex-wrap items-center justify-between gap-4 border-b border-[#E2DED5] pb-4">
             <div>
-              <div className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 uppercase tracking-wider mb-1">
+              <div className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[#9A6B2F] uppercase tracking-wider mb-1">
                 <Lock className="w-3.5 h-3.5" />
                 <span>Scriptify Transcripts · Encrypted Client Ingestion</span>
               </div>
-              <h2 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl font-bold text-[#0F1E36] tracking-tight">
                 Upload & Ingestion Console
               </h2>
-              <p className="text-xs text-slate-400 mt-1">
+              <p className="text-xs text-slate-600 mt-1">
                 End-to-end encrypted audio processing with zero-retention ephemeral memory buffers.
               </p>
             </div>
@@ -581,9 +580,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
               <div className="flex items-center gap-3">
                 <button
                   onClick={handlePurge}
-                  className="px-3.5 py-2 text-xs font-medium text-slate-300 bg-slate-900 border border-slate-700 rounded-lg hover:bg-slate-800 transition-colors flex items-center gap-1.5 cursor-pointer"
+                  className="px-3.5 py-2 text-xs font-semibold text-[#0F1E36] bg-white border border-[#D4CFC4] rounded-lg hover:bg-[#FAF8F4] transition-colors flex items-center gap-1.5 cursor-pointer shadow-xs"
                 >
-                  <RefreshCw className="w-3.5 h-3.5" />
+                  <RefreshCw className="w-3.5 h-3.5 text-[#0F2A4A]" />
                   <span>Process New Audio</span>
                 </button>
               </div>
@@ -592,8 +591,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
           {/* Error Banner */}
           {error && (
-            <div className="p-4 bg-rose-950/40 border border-rose-800/80 rounded-xl flex items-start gap-3 text-sm text-rose-200">
-              <AlertCircle className="w-5 h-5 text-rose-400 shrink-0 mt-0.5" />
+            <div className="p-4 bg-rose-50 border border-rose-200 rounded-xl flex items-start gap-3 text-sm text-rose-900">
+              <AlertCircle className="w-5 h-5 text-rose-700 shrink-0 mt-0.5" />
               <div className="flex-1">
                 <span className="font-semibold">Notice:</span> {error}
               </div>
@@ -604,56 +603,56 @@ export const Dashboard: React.FC<DashboardProps> = ({
           {!result ? (
             <div className="space-y-8">
               {/* Ingestion & Privacy Directives Bar */}
-              <div className="bg-slate-900/90 border border-slate-800 rounded-xl p-5 shadow-lg space-y-4">
-                <div className="flex items-center justify-between border-b border-slate-800/80 pb-3">
+              <div className="bg-white border border-[#E2DED5] rounded-xl p-5 shadow-sm space-y-4">
+                <div className="flex items-center justify-between border-b border-[#E2DED5] pb-3">
                   <div className="flex items-center gap-2">
-                    <Sliders className="w-4 h-4 text-cyan-400" />
-                    <span className="text-xs font-semibold text-white uppercase tracking-wider">
+                    <Sliders className="w-4 h-4 text-[#0F2A4A]" />
+                    <span className="text-xs font-semibold text-[#0F1E36] uppercase tracking-wider">
                       Ingestion & Privacy Directives
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 text-xs text-emerald-400">
-                    <ShieldCheck className="w-4 h-4" />
+                  <div className="flex items-center gap-2 text-xs text-emerald-800 font-semibold">
+                    <ShieldCheck className="w-4 h-4 text-emerald-700" />
                     <span>Zero-Retention Enforced</span>
                   </div>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
                   {/* Diarization Toggle */}
-                  <label className="flex items-center justify-between p-3 bg-slate-950/70 border border-slate-800 rounded-lg cursor-pointer hover:border-slate-700">
+                  <label className="flex items-center justify-between p-3 bg-[#FAF8F4] border border-[#E2DED5] rounded-lg cursor-pointer hover:border-[#0F2A4A]/40 transition-colors">
                     <div>
-                      <span className="font-semibold text-slate-200 block">Speaker Diarization</span>
-                      <span className="text-slate-400 text-[11px]">Separate multiple voices</span>
+                      <span className="font-semibold text-[#0F1E36] block">Speaker Diarization</span>
+                      <span className="text-slate-600 text-[11px]">Separate multiple voices</span>
                     </div>
                     <input
                       type="checkbox"
                       checked={options.diarization}
                       onChange={(e) => setOptions({ ...options, diarization: e.target.checked })}
-                      className="w-4 h-4 accent-cyan-400 cursor-pointer"
+                      className="w-4 h-4 accent-[#0F2A4A] cursor-pointer"
                     />
                   </label>
 
                   {/* PII Redaction Toggle */}
-                  <label className="flex items-center justify-between p-3 bg-slate-950/70 border border-slate-800 rounded-lg cursor-pointer hover:border-slate-700">
+                  <label className="flex items-center justify-between p-3 bg-[#FAF8F4] border border-[#E2DED5] rounded-lg cursor-pointer hover:border-[#0F2A4A]/40 transition-colors">
                     <div>
-                      <span className="font-semibold text-slate-200 block">PII & HIPAA Masking</span>
-                      <span className="text-slate-400 text-[11px]">Redact names, SSN & cards</span>
+                      <span className="font-semibold text-[#0F1E36] block">PII & HIPAA Masking</span>
+                      <span className="text-slate-600 text-[11px]">Redact names, SSN & cards</span>
                     </div>
                     <input
                       type="checkbox"
                       checked={options.redactPii}
                       onChange={(e) => setOptions({ ...options, redactPii: e.target.checked })}
-                      className="w-4 h-4 accent-cyan-400 cursor-pointer"
+                      className="w-4 h-4 accent-[#0F2A4A] cursor-pointer"
                     />
                   </label>
 
                   {/* Domain Profile Selector */}
-                  <div className="p-3 bg-slate-950/70 border border-slate-800 rounded-lg">
-                    <span className="font-semibold text-slate-200 block mb-1">Domain Lexicon</span>
+                  <div className="p-3 bg-[#FAF8F4] border border-[#E2DED5] rounded-lg">
+                    <span className="font-semibold text-[#0F1E36] block mb-1">Domain Lexicon</span>
                     <select
                       value={options.domain}
                       onChange={(e) => setOptions({ ...options, domain: e.target.value as any })}
-                      className="w-full bg-slate-900 border border-slate-700 rounded px-2 py-1 text-slate-200 text-xs focus:outline-none focus:border-cyan-400"
+                      className="w-full bg-white border border-[#D4CFC4] rounded px-2 py-1 text-[#0F1E36] text-xs font-medium focus:outline-none focus:border-[#0F2A4A]"
                     >
                       <option value="general">Standard Business</option>
                       <option value="finance">Finance & Capital Markets</option>
@@ -663,16 +662,16 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   </div>
 
                   {/* Client Pre-Encryption */}
-                  <label className="flex items-center justify-between p-3 bg-slate-950/70 border border-slate-800 rounded-lg cursor-pointer hover:border-slate-700">
+                  <label className="flex items-center justify-between p-3 bg-[#FAF8F4] border border-[#E2DED5] rounded-lg cursor-pointer hover:border-[#0F2A4A]/40 transition-colors">
                     <div>
-                      <span className="font-semibold text-slate-200 block">Client AES-256 Hash</span>
-                      <span className="text-slate-400 text-[11px]">Pre-transit file sealing</span>
+                      <span className="font-semibold text-[#0F1E36] block">Client AES-256 Hash</span>
+                      <span className="text-slate-600 text-[11px]">Pre-transit file sealing</span>
                     </div>
                     <input
                       type="checkbox"
                       checked={options.clientEncryption}
                       onChange={(e) => setOptions({ ...options, clientEncryption: e.target.checked })}
-                      className="w-4 h-4 accent-cyan-400 cursor-pointer"
+                      className="w-4 h-4 accent-[#0F2A4A] cursor-pointer"
                     />
                   </label>
                 </div>
@@ -694,10 +693,10 @@ export const Dashboard: React.FC<DashboardProps> = ({
                       handleFileUpload(e.dataTransfer.files[0]);
                     }
                   }}
-                  className={`lg:col-span-8 border-2 border-dashed rounded-2xl p-8 flex flex-col items-center justify-center text-center transition-all bg-slate-900/50 ${
+                  className={`lg:col-span-8 border-2 border-dashed rounded-xl p-8 flex flex-col items-center justify-center text-center transition-all bg-white shadow-sm ${
                     isDragging
-                      ? 'border-cyan-400 bg-cyan-950/20'
-                      : 'border-slate-800 hover:border-slate-700'
+                      ? 'border-[#0F2A4A] bg-[#F2EFE9]/60'
+                      : 'border-[#D4CFC4] hover:border-[#0F2A4A]/60'
                   }`}
                 >
                   <input
@@ -712,46 +711,46 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     }}
                   />
 
-                  <div className="w-16 h-16 rounded-2xl bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center mb-4 text-cyan-400">
+                  <div className="w-16 h-16 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] flex items-center justify-center mb-4 text-[#0F2A4A]">
                     <UploadCloud className="w-8 h-8" />
                   </div>
 
-                  <h3 className="text-lg font-semibold text-white mb-2">
+                  <h3 className="font-serif text-xl font-bold text-[#0F1E36] mb-2">
                     Drop your audio file here or browse
                   </h3>
-                  <p className="text-xs text-slate-400 max-w-sm mb-6 leading-relaxed">
+                  <p className="text-xs text-slate-600 max-w-sm mb-6 leading-relaxed">
                     Accepts MP3, WAV, M4A, FLAC, WEBM, and OGG. Ingested under client-side encrypted tunnel with guaranteed zero persistence.
                   </p>
 
                   <button
                     disabled={isProcessing}
                     onClick={handleInitiateUpload}
-                    className="px-6 py-3 text-xs font-semibold text-slate-950 bg-cyan-400 rounded-lg hover:bg-cyan-300 transition-all shadow-md hover:shadow-cyan-500/20 cursor-pointer disabled:opacity-50"
+                    className="px-6 py-3 text-xs font-semibold text-white bg-[#0F2A4A] rounded-lg hover:bg-[#173B66] transition-all shadow-sm cursor-pointer disabled:opacity-50"
                   >
                     Select Deposition File (.mp3, .wav, .m4a)
                   </button>
                 </div>
 
                 {/* Live Microphone Recording Card */}
-                <div className="lg:col-span-4 bg-slate-900/80 border border-slate-800 rounded-2xl p-6 flex flex-col justify-between shadow-xl">
+                <div className="lg:col-span-4 bg-white border border-[#E2DED5] rounded-xl p-6 flex flex-col justify-between shadow-sm">
                   <div className="space-y-3">
                     <div className="flex items-center justify-between text-xs">
-                      <span className="font-semibold text-white">Courtroom Voice Dictation</span>
+                      <span className="font-bold text-[#0F1E36]">Courtroom Voice Dictation</span>
                       {isRecording && (
-                        <span className="flex items-center gap-1.5 text-rose-400 font-mono font-medium">
-                          <span className="w-2 h-2 rounded-full bg-rose-500 animate-pulse" />
+                        <span className="flex items-center gap-1.5 text-rose-700 font-mono font-semibold">
+                          <span className="w-2 h-2 rounded-full bg-rose-600 animate-pulse" />
                           REC
                         </span>
                       )}
                     </div>
-                    <p className="text-xs text-slate-400 leading-relaxed">
+                    <p className="text-xs text-slate-600 leading-relaxed">
                       Capture audio directly using your device microphone for instant verbatim transcription and intelligence extraction.
                     </p>
                   </div>
 
                   {/* Active record timer & action */}
                   <div className="my-6 text-center space-y-4">
-                    <div className="text-3xl font-mono font-bold text-white tabular-nums">
+                    <div className="text-3xl font-mono font-bold text-[#0F1E36] tabular-nums">
                       {Math.floor(recordingSeconds / 60)
                         .toString()
                         .padStart(2, '0')}
@@ -762,7 +761,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     {isRecording ? (
                       <button
                         onClick={stopRecording}
-                        className="w-full py-3 px-4 bg-rose-600 hover:bg-rose-500 text-white font-semibold rounded-lg text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
+                        className="w-full py-3 px-4 bg-rose-700 hover:bg-rose-800 text-white font-semibold rounded-lg text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer"
                       >
                         <Square className="w-4 h-4 fill-white" />
                         <span>Stop Recording & Transcribe</span>
@@ -771,16 +770,16 @@ export const Dashboard: React.FC<DashboardProps> = ({
                       <button
                         disabled={isProcessing}
                         onClick={startRecording}
-                        className="w-full py-3 px-4 bg-slate-950 hover:bg-slate-800 border border-slate-700 text-slate-200 font-semibold rounded-lg text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer disabled:opacity-50"
+                        className="w-full py-3 px-4 bg-[#FAF8F4] hover:bg-[#F2EFE9] border border-[#D4CFC4] text-[#0F1E36] font-semibold rounded-lg text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer disabled:opacity-50"
                       >
-                        <Mic className="w-4 h-4 text-cyan-400" />
+                        <Mic className="w-4 h-4 text-[#0F2A4A]" />
                         <span>Start Deposition Dictation</span>
                       </button>
                     )}
                   </div>
 
-                  <div className="text-[11px] text-slate-400 flex items-center gap-1.5 justify-center">
-                    <Lock className="w-3.5 h-3.5 text-emerald-400" />
+                  <div className="text-[11px] text-slate-600 flex items-center gap-1.5 justify-center">
+                    <Lock className="w-3.5 h-3.5 text-emerald-700" />
                     <span>In-memory recording only · Not stored</span>
                   </div>
                 </div>
@@ -789,10 +788,10 @@ export const Dashboard: React.FC<DashboardProps> = ({
               {/* Preloaded Sample Audio Demos */}
               <div className="space-y-4 pt-4">
                 <div className="flex items-center justify-between">
-                  <div className="text-xs font-semibold text-slate-300 uppercase tracking-wider">
+                  <div className="text-xs font-semibold text-[#0F1E36] uppercase tracking-wider">
                     Or Test with Courtroom & Enterprise Presets:
                   </div>
-                  <span className="text-xs text-cyan-400">Zero audio download needed</span>
+                  <span className="text-xs font-medium text-[#9A6B2F]">Zero audio download needed</span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -801,22 +800,22 @@ export const Dashboard: React.FC<DashboardProps> = ({
                       key={sample.id}
                       disabled={isProcessing}
                       onClick={() => handleTranscribeSample(sample.id)}
-                      className="p-5 rounded-xl bg-slate-900 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-850 transition-all text-left space-y-3 cursor-pointer group disabled:opacity-50 shadow-md"
+                      className="p-5 rounded-xl bg-white border border-[#E2DED5] hover:border-[#0F2A4A] hover:shadow-md transition-all text-left space-y-3 cursor-pointer group disabled:opacity-50 shadow-xs"
                     >
                       <div className="flex items-center justify-between">
-                        <span className="text-[11px] font-mono text-cyan-400 font-semibold uppercase">
+                        <span className="text-[11px] font-mono text-[#9A6B2F] font-semibold uppercase">
                           {sample.category}
                         </span>
-                        <div className="w-6 h-6 rounded-full bg-slate-800 group-hover:bg-cyan-400 group-hover:text-slate-950 text-cyan-400 flex items-center justify-center transition-colors">
+                        <div className="w-6 h-6 rounded-full bg-[#FAF8F4] border border-[#E2DED5] group-hover:bg-[#0F2A4A] group-hover:text-white group-hover:border-[#0F2A4A] text-[#0F2A4A] flex items-center justify-center transition-colors">
                           <Play className="w-3 h-3 fill-current ml-0.5" />
                         </div>
                       </div>
 
-                      <div className="font-bold text-white text-sm group-hover:text-cyan-300 transition-colors">
+                      <div className="font-bold text-[#0F1E36] text-sm group-hover:text-[#0F2A4A] transition-colors">
                         {sample.title}
                       </div>
 
-                      <div className="flex items-center gap-3 text-xs text-slate-400 pt-2 border-t border-slate-800/80">
+                      <div className="flex items-center gap-3 text-xs text-slate-500 pt-2 border-t border-[#E2DED5]">
                         <span>{sample.duration}</span>
                         <span>·</span>
                         <span>{sample.speakers}</span>
@@ -828,15 +827,15 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
               {/* Processing Loader Indicator */}
               {isProcessing && (
-                <div className="p-8 rounded-2xl bg-slate-900 border border-cyan-500/40 text-center space-y-4 shadow-2xl animate-pulse">
-                  <div className="w-12 h-12 rounded-full border-2 border-cyan-400 border-t-transparent animate-spin mx-auto" />
+                <div className="p-8 rounded-xl bg-white border border-[#0F2A4A]/30 text-center space-y-4 shadow-md">
+                  <div className="w-10 h-10 rounded-full border-2 border-[#0F2A4A] border-t-transparent animate-spin mx-auto" />
                   <div className="space-y-1">
-                    <h4 className="text-base font-bold text-white">
+                    <h4 className="font-serif text-lg font-bold text-[#0F1E36]">
                       Processing Encrypted Audio File...
                     </h4>
-                    <p className="text-xs text-cyan-400 font-mono">{processingStep}</p>
+                    <p className="text-xs text-[#0F2A4A] font-mono font-medium">{processingStep}</p>
                   </div>
-                  <p className="text-[11px] text-slate-400">
+                  <p className="text-[11px] text-slate-500">
                     RAM-only memory buffers active. All data purged on session closure.
                   </p>
                 </div>

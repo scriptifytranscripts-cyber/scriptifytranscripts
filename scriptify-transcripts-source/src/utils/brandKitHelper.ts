@@ -46,7 +46,7 @@ export function downloadTextContent(content: string, filename: string, mimeType:
 export function generateLetterheadHtml(logoBase64?: string): string {
   const logoSrc = logoBase64
     ? `data:image/jpeg;base64,${logoBase64}`
-    : '/src/assets/images/scriptify_polished_logo_1794312499371.jpg';
+    : '/logo.jpg';
 
   return `<!DOCTYPE html>
 <html lang="en">
@@ -340,22 +340,24 @@ Scriptify Transcripts is a premier US legal and professional audio transcription
 
 **Key Brand Pillars:**
 - **99.8% Verbatim Precision:** Rigorous dual-pass human proofing for court depositions and technical audio.
-- **Competitive US Market Rates:** Delivering court-grade transcripts starting at $1.45/minute (vs. $1.99–$3.50+ legacy stenographers).
+- **Competitive Market Rates:** Delivering court-grade transcripts starting at $1.45/minute (vs. $1.99–$3.50+ legacy stenographers).
 - **Zero Ephemeral Retention:** Client-side AES-256 pre-encryption with automatic memory purge upon delivery.
 
 ---
 
-## 2. Color Palette
-- **Deep Corporate Navy:** \`#0B1E36\` (Primary Brand & Typography)
-- **Electric Cyan Blue:** \`#00A8E8\` (Action Accents & Logos)
-- **Dark Obsidian Canvas:** \`#020617\` (High-Contrast Digital Surfaces)
-- **Neutral Surface Slate:** \`#0F172A\` (Structural Cards & Dividers)
-- **Clean White:** \`#FFFFFF\` (Crisp Backgrounds & Document Stationery)
+## 2. Color Palette (Judicial Paper & Constitutional Navy)
+- **Judicial Navy:** \`#0F2A4A\` (Primary Brand, CTAs & Legal Authority)
+- **Editorial Dark Ink:** \`#0F1E36\` (High-Contrast Headlines & Body Copy)
+- **Archival Paper:** \`#FAF8F4\` (Primary Document Canvas)
+- **Warm Stone:** \`#F2EFE9\` (Secondary Section Bands & Surfaces)
+- **Antique Seal Bronze:** \`#9A6B2F\` (Restrained Legal Badges & Accents)
+- **Crisp Document White:** \`#FFFFFF\` (Elevated Transcript Sheets & Cards)
 
 ---
 
 ## 3. Official Typography
-- **Primary Display & Body:** Plus Jakarta Sans
+- **Editorial Serif Display:** Playfair Display
+- **Primary UI & Body:** Plus Jakarta Sans
 - **Timecodes & Tabular Figures:** JetBrains Mono (\`tabular-nums\`)
 
 ---

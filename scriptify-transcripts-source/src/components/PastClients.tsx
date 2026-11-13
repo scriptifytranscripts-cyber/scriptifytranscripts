@@ -1,5 +1,5 @@
 import React from 'react';
-import { Building2, ShieldCheck, Award, Star, CheckCircle2, FileText, ArrowUpRight } from 'lucide-react';
+import { Building2, ShieldCheck, FileText, ArrowUpRight } from 'lucide-react';
 
 interface PastClientsProps {
   onOpenPortalWithSample: (sampleId: string) => void;
@@ -48,28 +48,28 @@ export const PastClients: React.FC<PastClientsProps> = ({ onOpenPortalWithSample
   ];
 
   return (
-    <section id="clients" className="py-24 bg-slate-950/70 border-t border-slate-800/80">
-      <div className="max-w-7xl mx-auto px-6 space-y-16">
+    <section id="clients" className="py-20 bg-[#F2EFE9]/60 border-t border-[#E2DED5]">
+      <div className="max-w-7xl mx-auto px-6 space-y-14">
         {/* Section Header */}
         <div className="max-w-3xl space-y-3">
-          <div className="inline-flex items-center gap-2 text-xs font-semibold text-cyan-400 uppercase tracking-wider">
-            <Building2 className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 text-xs font-semibold text-[#9A6B2F] uppercase tracking-wider">
+            <Building2 className="w-3.5 h-3.5 text-[#0F2A4A]" />
             <span>Proven Track Record & Client Case Studies</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Trusted by US litigation firms, corporate counsel, and research institutions.
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-[#0F1E36] tracking-tight">
+            Trusted by litigation firms, corporate counsel, and research institutions.
           </h2>
-          <p className="text-slate-300 text-sm leading-relaxed">
-            See how organizations across the United States leverage Scriptify Transcripts for confidential depositions, executive briefings, and academic research.
+          <p className="text-slate-700 text-sm leading-relaxed">
+            See how organizations leverage Scriptify Transcripts for confidential depositions, executive briefings, and clinical research records.
           </p>
         </div>
 
         {/* Client Roster Strip */}
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 py-4 border-y border-slate-800/80">
+        <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 py-5 border-y border-[#E2DED5]">
           {clientLogos.map((org) => (
-            <div key={org.name} className="p-3 text-center space-y-1">
-              <div className="text-xs font-bold text-white tracking-tight">{org.name}</div>
-              <div className="text-[10px] text-cyan-400 font-mono uppercase">{org.type}</div>
+            <div key={org.name} className="p-2 text-center space-y-1">
+              <div className="text-xs font-bold text-[#0F1E36] tracking-tight">{org.name}</div>
+              <div className="text-[11px] text-[#9A6B2F] font-medium">{org.type}</div>
             </div>
           ))}
         </div>
@@ -79,44 +79,44 @@ export const PastClients: React.FC<PastClientsProps> = ({ onOpenPortalWithSample
           {caseStudies.map((study) => (
             <div
               key={study.client}
-              className="p-8 rounded-2xl bg-slate-900 border border-slate-800 flex flex-col justify-between hover:border-cyan-500/30 transition-all shadow-xl space-y-6"
+              className="p-8 rounded-xl bg-white border border-[#E2DED5] flex flex-col justify-between hover:border-[#0F2A4A] transition-all shadow-xs space-y-6"
             >
               <div className="space-y-4">
                 <div className="flex items-center justify-between text-xs">
-                  <span className="font-mono text-cyan-400 uppercase tracking-wider text-[11px] font-semibold">
+                  <span className="text-[#9A6B2F] font-semibold text-[11px]">
                     {study.sector}
                   </span>
                   <span className="text-slate-500">{study.location}</span>
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-lg font-bold text-white leading-snug">
+                  <h3 className="font-serif text-lg font-bold text-[#0F1E36] leading-snug">
                     {study.headline}
                   </h3>
-                  <div className="text-xs text-slate-400 font-semibold">{study.client}</div>
-                  <p className="text-xs text-slate-300 leading-relaxed pt-1">
+                  <div className="text-xs text-[#0F2A4A] font-semibold">{study.client}</div>
+                  <p className="text-xs text-slate-600 leading-relaxed pt-1">
                     {study.details}
                   </p>
                 </div>
               </div>
 
-              <div className="pt-4 border-t border-slate-800/90 space-y-4">
+              <div className="pt-4 border-t border-[#E2DED5] space-y-4">
                 <div className="grid grid-cols-2 gap-2 text-xs">
-                  <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-center">
-                    <span className="text-[10px] text-slate-400 block uppercase">Outcome</span>
-                    <span className="font-mono text-cyan-400 font-bold">{study.metric}</span>
+                  <div className="p-2.5 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-center">
+                    <span className="text-[10px] text-slate-500 block uppercase">Outcome</span>
+                    <span className="font-mono text-[#0F2A4A] font-bold">{study.metric}</span>
                   </div>
-                  <div className="p-2.5 rounded-lg bg-slate-950 border border-slate-800 text-center">
-                    <span className="text-[10px] text-slate-400 block uppercase">Speed</span>
-                    <span className="font-mono text-emerald-400 font-bold">{study.secondaryMetric}</span>
+                  <div className="p-2.5 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-center">
+                    <span className="text-[10px] text-slate-500 block uppercase">Speed</span>
+                    <span className="font-mono text-emerald-800 font-bold">{study.secondaryMetric}</span>
                   </div>
                 </div>
 
                 <button
                   onClick={() => onOpenPortalWithSample(study.sampleId)}
-                  className="w-full py-2 px-3 text-xs font-semibold text-slate-200 bg-slate-950 hover:bg-slate-800 rounded-lg border border-slate-800 hover:border-slate-700 transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                  className="w-full py-2.5 px-3 text-xs font-semibold text-[#0F2A4A] bg-[#FAF8F4] hover:bg-[#0F2A4A] hover:text-white rounded-lg border border-[#D4CFC4] hover:border-[#0F2A4A] transition-colors flex items-center justify-center gap-1.5 cursor-pointer group"
                 >
-                  <FileText className="w-3.5 h-3.5 text-cyan-400" />
+                  <FileText className="w-3.5 h-3.5" />
                   <span>Test this Format in Portal</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />
                 </button>
@@ -126,19 +126,19 @@ export const PastClients: React.FC<PastClientsProps> = ({ onOpenPortalWithSample
         </div>
 
         {/* Certified Quality Guarantee Strip */}
-        <div className="p-6 rounded-2xl bg-slate-900/60 border border-slate-800 flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-300">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 flex items-center justify-center shrink-0">
+        <div className="p-6 rounded-xl bg-white border border-[#E2DED5] flex flex-col md:flex-row items-center justify-between gap-6 text-xs text-slate-700 shadow-xs">
+          <div className="flex items-center gap-3.5">
+            <div className="w-10 h-10 rounded-lg bg-[#FAF8F4] border border-[#E2DED5] text-[#0F2A4A] flex items-center justify-center shrink-0">
               <ShieldCheck className="w-5 h-5" />
             </div>
             <div>
-              <span className="font-bold text-white text-sm block">100% US-Certified Court Accuracy Standards</span>
-              <p className="text-slate-400">
-                Rule 30(b)(6) line-numbering format, verbatim accuracy attestation, and certified court reporter standard compliance.
+              <span className="font-bold text-[#0F1E36] text-sm block">Court-Certified Evidentiary Standards</span>
+              <p className="text-slate-600">
+                Rule 30(b)(6) line-numbering format, verbatim accuracy attestation, and certified court reporter compliance.
               </p>
             </div>
           </div>
-          <div className="text-right text-slate-400 font-mono text-[11px] shrink-0">
+          <div className="text-right text-slate-600 font-mono text-[11px] shrink-0">
             Headquarters: 30 N Gould St, Sheridan, WY 82801
           </div>
         </div>

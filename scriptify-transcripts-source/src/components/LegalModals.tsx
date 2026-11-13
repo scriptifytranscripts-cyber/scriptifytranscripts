@@ -37,28 +37,28 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-50 bg-[#0F1E36]/45 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
       onClick={onClose}
     >
       <div
-        className="bg-slate-900 border border-slate-800 rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl relative my-auto overflow-hidden text-slate-200"
+        className="bg-white border border-[#D4CFC4] rounded-2xl max-w-4xl w-full max-h-[90vh] flex flex-col shadow-2xl relative my-auto overflow-hidden text-[#0F1E36]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top Header & Tab Navigation */}
-        <div className="border-b border-slate-800 bg-slate-950/70 p-5 sm:p-6 pb-0 flex flex-col gap-4">
+        <div className="border-b border-[#E2DED5] bg-[#FAF8F4] p-5 sm:p-6 pb-0 flex flex-col gap-4">
           <div className="flex items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-9 h-9 rounded-lg bg-cyan-500/10 border border-cyan-500/20 flex items-center justify-center text-cyan-400">
+              <div className="w-9 h-9 rounded-lg bg-white border border-[#E2DED5] flex items-center justify-center text-[#0F2A4A]">
                 {activeType === 'privacy' && <Lock className="w-5 h-5" />}
                 {activeType === 'terms' && <FileText className="w-5 h-5" />}
                 {activeType === 'confidentiality' && <ShieldCheck className="w-5 h-5" />}
                 {activeType === 'invoicing' && <Building2 className="w-5 h-5" />}
               </div>
               <div>
-                <span className="text-[11px] font-mono uppercase tracking-wider text-cyan-400 font-semibold block">
+                <span className="text-[11px] font-mono uppercase tracking-wider text-[#9A6B2F] font-semibold block">
                   Scriptify Transcripts · Compliance & Governance
                 </span>
-                <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+                <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#0F1E36] tracking-tight">
                   {activeType === 'privacy' && 'Privacy Charter & Zero-Data Retention'}
                   {activeType === 'terms' && 'Terms of Service & Turnaround SLA'}
                   {activeType === 'confidentiality' && 'Confidentiality Guarantee & Bilateral NDA'}
@@ -69,7 +69,7 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
 
             <button
               onClick={onClose}
-              className="p-2 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800/60 transition-colors cursor-pointer"
+              className="p-2 text-slate-500 hover:text-[#0F1E36] rounded-lg hover:bg-[#F2EFE9] transition-colors cursor-pointer"
               aria-label="Close dialog"
             >
               <X className="w-5 h-5" />
@@ -77,13 +77,13 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
           </div>
 
           {/* Tab Selector */}
-          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-2 border-b border-slate-800">
+          <div className="flex items-center gap-2 overflow-x-auto no-scrollbar pt-2">
             <button
               onClick={() => onSelectType('privacy')}
               className={`px-3.5 py-2.5 text-xs font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${
                 activeType === 'privacy'
-                  ? 'border-cyan-400 text-cyan-400'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
+                  ? 'border-[#0F2A4A] text-[#0F2A4A]'
+                  : 'border-transparent text-slate-600 hover:text-[#0F1E36]'
               }`}
             >
               Privacy Charter
@@ -92,8 +92,8 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
               onClick={() => onSelectType('terms')}
               className={`px-3.5 py-2.5 text-xs font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${
                 activeType === 'terms'
-                  ? 'border-cyan-400 text-cyan-400'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
+                  ? 'border-[#0F2A4A] text-[#0F2A4A]'
+                  : 'border-transparent text-slate-600 hover:text-[#0F1E36]'
               }`}
             >
               Terms of Service
@@ -102,8 +102,8 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
               onClick={() => onSelectType('confidentiality')}
               className={`px-3.5 py-2.5 text-xs font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${
                 activeType === 'confidentiality'
-                  ? 'border-cyan-400 text-cyan-400'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
+                  ? 'border-[#0F2A4A] text-[#0F2A4A]'
+                  : 'border-transparent text-slate-600 hover:text-[#0F1E36]'
               }`}
             >
               Confidentiality & NDA
@@ -112,8 +112,8 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
               onClick={() => onSelectType('invoicing')}
               className={`px-3.5 py-2.5 text-xs font-semibold border-b-2 transition-all whitespace-nowrap cursor-pointer ${
                 activeType === 'invoicing'
-                  ? 'border-cyan-400 text-cyan-400'
-                  : 'border-transparent text-slate-400 hover:text-slate-200'
+                  ? 'border-[#0F2A4A] text-[#0F2A4A]'
+                  : 'border-transparent text-slate-600 hover:text-[#0F1E36]'
               }`}
             >
               US Invoicing (Wyoming)
@@ -122,23 +122,23 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
         </div>
 
         {/* Scrollable Body Content */}
-        <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-xs sm:text-sm text-slate-300 leading-relaxed max-h-[calc(90vh-190px)]">
+        <div className="p-6 sm:p-8 overflow-y-auto space-y-6 text-xs sm:text-sm text-slate-700 leading-relaxed max-h-[calc(90vh-190px)]">
           {/* TAB 1: PRIVACY CHARTER */}
           {activeType === 'privacy' && (
             <div className="space-y-6">
-              <div className="p-4 rounded-xl bg-cyan-950/20 border border-cyan-800/40 text-cyan-200 text-xs flex items-start gap-3">
-                <ShieldCheck className="w-5 h-5 text-cyan-400 shrink-0 mt-0.5" />
+              <div className="p-4 rounded-xl bg-[#FDF8F0] border border-[#E6D7BE] text-slate-700 text-xs flex items-start gap-3">
+                <ShieldCheck className="w-5 h-5 text-[#9A6B2F] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="text-white block font-semibold mb-0.5">
+                  <strong className="text-[#0F1E36] block font-semibold mb-0.5">
                     Executive Summary: Absolute Zero Persistent Data Retention
                   </strong>
                   Unlike consumer speech platforms, Scriptify Transcripts never uses client audio recordings or transcripts for training artificial intelligence, speech recognition models, or analytics corpuses. All media buffers are purged from RAM immediately upon job completion.
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">01.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">01.</span>
                   Client-Side AES-256 Pre-Encryption Architecture
                 </h3>
                 <p>
@@ -146,9 +146,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">02.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">02.</span>
                   Ephemeral In-Memory Processing & Disk Isolation
                 </h3>
                 <p>
@@ -156,9 +156,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">03.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">03.</span>
                   HIPAA Safe Harbor Compliance & PHI De-Identification
                 </h3>
                 <p>
@@ -166,9 +166,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">04.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">04.</span>
                   GDPR, CCPA & FERPA Compliance
                 </h3>
                 <p>
@@ -176,9 +176,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">05.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">05.</span>
                   Contractual Non-Training Clause
                 </h3>
                 <p>
@@ -191,17 +191,17 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
           {/* TAB 2: TERMS OF SERVICE */}
           {activeType === 'terms' && (
             <div className="space-y-6">
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs flex items-center justify-between gap-4">
-                <div className="flex items-center gap-2 text-slate-300">
-                  <Calendar className="w-4 h-4 text-cyan-400" />
+              <div className="p-4 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] text-xs flex items-center justify-between gap-4 flex-wrap">
+                <div className="flex items-center gap-2 text-[#0F1E36] font-medium">
+                  <Calendar className="w-4 h-4 text-[#0F2A4A]" />
                   <span>Effective Date: Updated for Calendar Year {new Date().getFullYear()}</span>
                 </div>
-                <div className="text-cyan-400 font-mono text-[11px]">Governing Law: Wyoming, USA</div>
+                <div className="text-[#9A6B2F] font-mono text-[11px] font-semibold">Governing Law: Wyoming, USA</div>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">01.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">01.</span>
                   Scope of Transcription Services & Deliverables
                 </h3>
                 <p>
@@ -209,22 +209,22 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">02.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">02.</span>
                   Turnaround Service Level Agreements (SLAs)
                 </h3>
-                <ul className="space-y-2 list-disc list-inside text-slate-300 pl-2">
-                  <li><strong className="text-white">Instant AI (Sub-Minute):</strong> Automated transcription at $0.20/audio minute.</li>
-                  <li><strong className="text-white">Standard 48-Hour Turnaround:</strong> Human-verified transcription at $1.45/audio minute (competitive rate vs. $1.99–$2.25 traditional bureaus).</li>
-                  <li><strong className="text-white">Rush 24-Hour Delivery:</strong> Prioritized human-verified transcription at $1.95/audio minute.</li>
-                  <li><strong className="text-white">Same-Day 12-Hour Priority:</strong> Expedited court-deadline transcription at $2.50/audio minute.</li>
+                <ul className="space-y-2 list-disc list-inside text-slate-700 pl-2">
+                  <li><strong className="text-[#0F1E36]">Instant AI (Sub-Minute):</strong> Automated transcription at $0.20/audio minute.</li>
+                  <li><strong className="text-[#0F1E36]">Standard 48-Hour Turnaround:</strong> Human-verified transcription at $1.45/audio minute (competitive rate vs. $1.99–$2.25 traditional bureaus).</li>
+                  <li><strong className="text-[#0F1E36]">Rush 24-Hour Delivery:</strong> Prioritized human-verified transcription at $1.95/audio minute.</li>
+                  <li><strong className="text-[#0F1E36]">Same-Day 12-Hour Priority:</strong> Expedited court-deadline transcription at $2.50/audio minute.</li>
                 </ul>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">03.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">03.</span>
                   99.8% Verbatim Accuracy & 14-Day Free Re-Review Guarantee
                 </h3>
                 <p>
@@ -232,9 +232,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">04.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">04.</span>
                   Transparent Per-Minute Billing
                 </h3>
                 <p>
@@ -242,9 +242,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">05.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">05.</span>
                   Intellectual Property Ownership
                 </h3>
                 <p>
@@ -257,9 +257,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
           {/* TAB 3: CONFIDENTIALITY & BILATERAL NDA */}
           {activeType === 'confidentiality' && (
             <div className="space-y-6">
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs flex items-center justify-between gap-4">
-                <div className="flex items-center gap-2 text-emerald-400">
-                  <ShieldCheck className="w-4 h-4" />
+              <div className="p-4 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] text-xs flex items-center justify-between gap-4 flex-wrap">
+                <div className="flex items-center gap-2 text-emerald-800 font-semibold">
+                  <ShieldCheck className="w-4 h-4 text-emerald-700" />
                   <span>Bilateral Non-Disclosure Agreement (NDA) Enforced</span>
                 </div>
                 <button
@@ -267,15 +267,15 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                     onClose();
                     onRequestQuoteOrNDA('Bilateral NDA Execution Request - Scriptify Transcripts');
                   }}
-                  className="px-3 py-1 bg-cyan-400 hover:bg-cyan-300 text-slate-950 text-xs font-bold rounded-lg cursor-pointer"
+                  className="px-3.5 py-1.5 bg-[#0F2A4A] hover:bg-[#173B66] text-white text-xs font-semibold rounded-lg cursor-pointer transition-colors"
                 >
                   Request Executed NDA
                 </button>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">01.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">01.</span>
                   Bilateral Confidentiality Obligations
                 </h3>
                 <p>
@@ -283,9 +283,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">02.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">02.</span>
                   Personnel Screening & Individual NDAs
                 </h3>
                 <p>
@@ -293,9 +293,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">03.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">03.</span>
                   Attorney-Client Privilege & Work-Product Preservation
                 </h3>
                 <p>
@@ -303,9 +303,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">04.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">04.</span>
                   Federal Rule 30(b)(6) Deposition Attestation
                 </h3>
                 <p>
@@ -313,9 +313,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">05.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">05.</span>
                   Cryptographic Certificate of Destruction
                 </h3>
                 <p>
@@ -328,13 +328,13 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
           {/* TAB 4: US INVOICING & WYOMING ENTITY */}
           {activeType === 'invoicing' && (
             <div className="space-y-6">
-              <div className="p-4 rounded-xl bg-slate-950 border border-slate-800 text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="p-4 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] text-xs flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="space-y-1">
-                  <div className="text-slate-200 font-bold flex items-center gap-1.5">
-                    <MapPin className="w-4 h-4 text-cyan-400" />
+                  <div className="text-[#0F1E36] font-bold flex items-center gap-1.5">
+                    <MapPin className="w-4 h-4 text-[#9A6B2F]" />
                     <span>Official US Business Headquarters</span>
                   </div>
-                  <div className="text-slate-400 font-mono">
+                  <div className="text-slate-600 font-mono">
                     30 N Gould St, STE R, Sheridan, WY 82801, United States
                   </div>
                 </div>
@@ -343,15 +343,15 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                     onClose();
                     onRequestQuoteOrNDA('Form W-9 & Vendor Onboarding Packet Request');
                   }}
-                  className="px-3.5 py-2 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-lg cursor-pointer whitespace-nowrap self-start sm:self-auto"
+                  className="px-3.5 py-2 bg-[#0F2A4A] hover:bg-[#173B66] text-white font-semibold text-xs rounded-lg cursor-pointer whitespace-nowrap self-start sm:self-auto transition-colors"
                 >
                   Request Form W-9
                 </button>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">01.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">01.</span>
                   US Domestic Entity & Vendor Onboarding
                 </h3>
                 <p>
@@ -359,57 +359,57 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">02.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">02.</span>
                   Supported Enterprise Payment Rails
                 </h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
-                  <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                    <div className="font-semibold text-white flex items-center gap-2">
-                      <CreditCard className="w-4 h-4 text-cyan-400" />
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] space-y-1">
+                    <div className="font-semibold text-[#0F1E36] flex items-center gap-2">
+                      <CreditCard className="w-4 h-4 text-[#0F2A4A]" />
                       <span>Corporate Cards & P-Cards</span>
                     </div>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-[11px] text-slate-600">
                       Visa, MasterCard, American Express, Discover. Instant automated digital receipt with itemized line items.
                     </p>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                    <div className="font-semibold text-white flex items-center gap-2">
-                      <Building2 className="w-4 h-4 text-cyan-400" />
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] space-y-1">
+                    <div className="font-semibold text-[#0F1E36] flex items-center gap-2">
+                      <Building2 className="w-4 h-4 text-[#0F2A4A]" />
                       <span>ACH Direct Deposit / Fedwire</span>
                     </div>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-[11px] text-slate-600">
                       Direct US bank-to-bank electronic transfers. Detailed wiring instructions provided on verified invoices.
                     </p>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                    <div className="font-semibold text-white flex items-center gap-2">
-                      <FileText className="w-4 h-4 text-cyan-400" />
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] space-y-1">
+                    <div className="font-semibold text-[#0F1E36] flex items-center gap-2">
+                      <FileText className="w-4 h-4 text-[#0F2A4A]" />
                       <span>Procurement Portals</span>
                     </div>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-[11px] text-slate-600">
                       Direct invoicing via Bill.com, Coupa, SAP Ariba, Tipalti, and AvidXchange.
                     </p>
                   </div>
 
-                  <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 space-y-1">
-                    <div className="font-semibold text-white flex items-center gap-2">
-                      <Scale className="w-4 h-4 text-cyan-400" />
+                  <div className="p-3.5 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] space-y-1">
+                    <div className="font-semibold text-[#0F1E36] flex items-center gap-2">
+                      <Scale className="w-4 h-4 text-[#0F2A4A]" />
                       <span>Law Firm Trust Accounting (IOLTA)</span>
                     </div>
-                    <p className="text-[11px] text-slate-400">
+                    <p className="text-[11px] text-slate-600">
                       Separate case docket reference billing compliant with state bar trust accounting rules.
                     </p>
                   </div>
                 </div>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">03.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">03.</span>
                   Net-30 & Net-60 Corporate Invoicing Terms
                 </h3>
                 <p>
@@ -417,17 +417,17 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 </p>
               </div>
 
-              <div className="space-y-3">
-                <h3 className="text-base font-bold text-white flex items-center gap-2">
-                  <span className="text-cyan-400 font-mono text-xs">04.</span>
+              <div className="space-y-2">
+                <h3 className="text-base font-bold text-[#0F1E36] flex items-center gap-2">
+                  <span className="text-[#9A6B2F] font-mono text-xs">04.</span>
                   Corporate Remittance Address
                 </h3>
-                <div className="p-3.5 rounded-xl bg-slate-950 border border-slate-800 font-mono text-xs space-y-1 text-slate-300">
-                  <div className="text-white font-bold">Scriptify Transcripts</div>
+                <div className="p-3.5 rounded-xl bg-[#FAF8F4] border border-[#E2DED5] font-mono text-xs space-y-1 text-slate-700">
+                  <div className="text-[#0F1E36] font-bold">Scriptify Transcripts</div>
                   <div>Accounts Receivable / Vendor Relations</div>
                   <div>30 N Gould St, STE R</div>
                   <div>Sheridan, WY 82801, United States</div>
-                  <div className="text-cyan-400 pt-1">Email: contact@scriptifytranscripts.com</div>
+                  <div className="text-[#0F2A4A] font-semibold pt-1">Email: contact@scriptifytranscripts.com</div>
                 </div>
               </div>
             </div>
@@ -435,9 +435,9 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
         </div>
 
         {/* Modal Footer Controls */}
-        <div className="p-4 sm:p-5 border-t border-slate-800 bg-slate-950/90 flex flex-wrap items-center justify-between gap-3 text-xs">
-          <div className="flex items-center gap-2 text-slate-400">
-            <Lock className="w-3.5 h-3.5 text-emerald-400" />
+        <div className="p-4 sm:p-5 border-t border-[#E2DED5] bg-[#FAF8F4] flex flex-wrap items-center justify-between gap-3 text-xs">
+          <div className="flex items-center gap-2 text-slate-600">
+            <Lock className="w-3.5 h-3.5 text-emerald-700" />
             <span>Official US Corporate Governance · Scriptify Transcripts</span>
           </div>
 
@@ -447,13 +447,13 @@ export const LegalModals: React.FC<LegalModalsProps> = ({
                 onClose();
                 onRequestQuoteOrNDA(`Inquiry regarding ${activeType.toUpperCase()}`);
               }}
-              className="px-4 py-2 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold rounded-lg transition-colors cursor-pointer"
+              className="px-4 py-2 bg-[#0F2A4A] hover:bg-[#173B66] text-white font-semibold rounded-lg transition-colors cursor-pointer"
             >
               Contact Legal & Billing
             </button>
             <button
               onClick={onClose}
-              className="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-200 rounded-lg transition-colors cursor-pointer font-medium"
+              className="px-4 py-2 bg-white hover:bg-[#F2EFE9] border border-[#D4CFC4] text-[#0F1E36] rounded-lg transition-colors cursor-pointer font-medium"
             >
               Close
             </button>

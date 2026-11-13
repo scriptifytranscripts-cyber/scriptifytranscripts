@@ -198,17 +198,17 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 bg-slate-950/85 backdrop-blur-md flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
+      className="fixed inset-0 z-50 bg-[#0F1E36]/45 backdrop-blur-sm flex items-center justify-center p-3 sm:p-6 overflow-y-auto"
       onClick={onClose}
     >
       <div
-        className="bg-slate-900 border border-slate-800 rounded-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto p-4 sm:p-6 md:p-7 relative shadow-2xl my-auto space-y-5 text-slate-100"
+        className="bg-white border border-[#D4CFC4] rounded-2xl max-w-lg w-full max-h-[92vh] overflow-y-auto p-4 sm:p-6 md:p-7 relative shadow-2xl my-auto space-y-5 text-[#0F1E36]"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-1 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors cursor-pointer"
+          className="absolute top-4 right-4 sm:top-5 sm:right-5 p-1.5 text-slate-500 hover:text-[#0F1E36] rounded-lg hover:bg-[#F2EFE9] transition-colors cursor-pointer"
           aria-label="Close authentication modal"
         >
           <X className="w-5 h-5" />
@@ -216,27 +216,27 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
         {/* Modal Header */}
         <div className="space-y-1.5 pr-8">
-          <div className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-cyan-400 uppercase tracking-wider">
+          <div className="inline-flex items-center gap-1.5 text-[11px] font-mono font-semibold text-[#9A6B2F] uppercase tracking-wider">
             <Lock className="w-3.5 h-3.5" />
             <span>Scriptify Transcripts · Enterprise Client Gate</span>
           </div>
-          <h2 className="text-xl sm:text-2xl font-extrabold text-white tracking-tight">
+          <h2 className="font-serif text-xl sm:text-2xl font-bold text-[#0F1E36] tracking-tight">
             Sign In to Client Portal
           </h2>
-          <p className="text-xs text-slate-300 leading-relaxed">
+          <p className="text-xs text-slate-600 leading-relaxed">
             {defaultReason ||
               'Access encrypted deposition dockets, manage Net-30 firm invoicing, and bind audio to our Wyoming Bilateral NDA.'}
           </p>
         </div>
 
         {/* 1-Click Demo Profiles (For Instant Zero-Friction Testing) */}
-        <div className="p-3 bg-slate-950 rounded-xl border border-slate-800 space-y-2">
-          <div className="flex items-center justify-between text-[11px] text-slate-400 font-medium">
-            <span className="flex items-center gap-1 text-cyan-400 font-semibold">
+        <div className="p-3 bg-[#FAF8F4] rounded-xl border border-[#E2DED5] space-y-2">
+          <div className="flex items-center justify-between text-[11px] text-slate-600 font-medium">
+            <span className="flex items-center gap-1 text-[#0F2A4A] font-semibold">
               <CheckCircle2 className="w-3.5 h-3.5" />
               1-Click Demo Client Logins:
             </span>
-            <span className="text-[10px] text-emerald-400">Instant Access</span>
+            <span className="text-[10px] text-emerald-800 font-semibold">Instant Access</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2">
@@ -245,12 +245,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 key={demo.id}
                 type="button"
                 onClick={() => handleQuickDemoSelect(demo)}
-                className="p-2 rounded-lg bg-slate-900 border border-slate-800 hover:border-cyan-500/50 hover:bg-slate-850 text-left transition-all cursor-pointer group"
+                className="p-2 rounded-lg bg-white border border-[#E2DED5] hover:border-[#0F2A4A] hover:bg-[#FDF8F0] text-left transition-all cursor-pointer group"
               >
-                <div className="font-semibold text-white text-[11px] group-hover:text-cyan-300 truncate">
+                <div className="font-semibold text-[#0F1E36] text-[11px] group-hover:text-[#0F2A4A] truncate">
                   {demo.name.split(',')[0]}
                 </div>
-                <div className="text-[10px] text-slate-400 truncate">
+                <div className="text-[10px] text-slate-500 truncate">
                   {demo.organization.split('(')[0]}
                 </div>
               </button>
@@ -259,7 +259,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         </div>
 
         {/* Enterprise Standard Auth Method Tabs */}
-        <div className="flex rounded-xl bg-slate-950 p-1 border border-slate-800 gap-1 text-xs">
+        <div className="flex rounded-xl bg-[#F2EFE9] p-1 border border-[#E2DED5] gap-1 text-xs">
           <button
             type="button"
             onClick={() => {
@@ -268,8 +268,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             }}
             className={`flex-1 py-2 px-2 text-center font-semibold rounded-lg transition-all cursor-pointer ${
               authMethod === 'sso'
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#0F2A4A] text-white shadow-sm'
+                : 'text-slate-600 hover:text-[#0F1E36]'
             }`}
           >
             Enterprise SSO
@@ -282,8 +282,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             }}
             className={`flex-1 py-2 px-2 text-center font-semibold rounded-lg transition-all cursor-pointer ${
               authMethod === 'credentials'
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#0F2A4A] text-white shadow-sm'
+                : 'text-slate-600 hover:text-[#0F1E36]'
             }`}
           >
             Email & Password
@@ -296,8 +296,8 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             }}
             className={`flex-1 py-2 px-2 text-center font-semibold rounded-lg transition-all cursor-pointer ${
               authMethod === 'magic'
-                ? 'bg-cyan-500/20 text-cyan-300 border border-cyan-500/40 shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#0F2A4A] text-white shadow-sm'
+                : 'text-slate-600 hover:text-[#0F1E36]'
             }`}
           >
             Magic Link
@@ -305,7 +305,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         </div>
 
         {error && (
-          <div className="p-3 bg-rose-950/40 border border-rose-800 text-rose-200 text-xs rounded-lg">
+          <div className="p-3 bg-rose-50 border border-rose-200 text-rose-800 text-xs rounded-lg">
             {error}
           </div>
         )}
@@ -318,7 +318,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <button
                 type="button"
                 onClick={handleGoogleAuth}
-                className="w-full py-2.5 px-4 bg-slate-950 hover:bg-slate-800/90 border border-slate-700/80 hover:border-slate-600 rounded-xl text-xs font-semibold text-white flex items-center justify-center gap-3 transition-all cursor-pointer shadow-sm group"
+                className="w-full py-2.5 px-4 bg-[#FAF8F4] hover:bg-[#F2EFE9] border border-[#D4CFC4] hover:border-[#0F2A4A]/50 rounded-xl text-xs font-semibold text-[#0F1E36] flex items-center justify-center gap-3 transition-all cursor-pointer shadow-xs group"
               >
                 {/* Official Google G SVG */}
                 <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
@@ -342,11 +342,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 <span>Continue with Google Workspace</span>
               </button>
 
-              {/* Microsoft 365 / Entra ID Button (#1 Standard for US Law Firms) */}
+              {/* Microsoft 365 / Entra ID Button */}
               <button
                 type="button"
                 onClick={handleMicrosoftAuth}
-                className="w-full py-2.5 px-4 bg-slate-950 hover:bg-slate-800/90 border border-slate-700/80 hover:border-slate-600 rounded-xl text-xs font-semibold text-white flex items-center justify-center gap-3 transition-all cursor-pointer shadow-sm group"
+                className="w-full py-2.5 px-4 bg-[#FAF8F4] hover:bg-[#F2EFE9] border border-[#D4CFC4] hover:border-[#0F2A4A]/50 rounded-xl text-xs font-semibold text-[#0F1E36] flex items-center justify-center gap-3 transition-all cursor-pointer shadow-xs group"
               >
                 {/* Official Microsoft 4-Color Grid SVG */}
                 <svg className="w-4 h-4 shrink-0" viewBox="0 0 23 23">
@@ -360,12 +360,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
             </div>
 
             {/* Corporate SAML 2.0 / Okta Domain Input */}
-            <form onSubmit={handleSamlSso} className="p-3.5 bg-slate-950 rounded-xl border border-slate-800 space-y-2.5">
-              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-300">
-                <Key className="w-3.5 h-3.5 text-cyan-400" />
+            <form onSubmit={handleSamlSso} className="p-3.5 bg-[#FAF8F4] rounded-xl border border-[#E2DED5] space-y-2.5">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-[#0F1E36]">
+                <Key className="w-3.5 h-3.5 text-[#9A6B2F]" />
                 <span>Law Firm Domain Single Sign-On (Okta / SAML 2.0)</span>
               </div>
-              <p className="text-[10px] text-slate-400">
+              <p className="text-[10px] text-slate-600">
                 Enter your firm domain to route through your organization's identity provider.
               </p>
               <div className="flex gap-2">
@@ -374,11 +374,11 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                   placeholder="e.g. vancestirlinglaw.com"
                   value={ssoDomain}
                   onChange={(e) => setSsoDomain(e.target.value)}
-                  className="flex-1 px-3 py-2 bg-slate-900 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 text-xs"
+                  className="flex-1 px-3 py-2 bg-white border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] text-xs"
                 />
                 <button
                   type="submit"
-                  className="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-cyan-400 text-xs font-semibold rounded-lg transition-colors cursor-pointer shrink-0"
+                  className="px-3 py-2 bg-[#0F2A4A] hover:bg-[#173B66] text-white text-xs font-semibold rounded-lg transition-colors cursor-pointer shrink-0"
                 >
                   Connect SSO
                 </button>
@@ -390,14 +390,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         {/* TAB 2: EMAIL & PASSWORD (SIGN IN OR REGISTER) */}
         {authMethod === 'credentials' && (
           <div className="space-y-4">
-            <div className="flex rounded-lg bg-slate-950 p-1 border border-slate-800 text-[11px]">
+            <div className="flex rounded-lg bg-[#FAF8F4] p-1 border border-[#E2DED5] text-[11px]">
               <button
                 type="button"
                 onClick={() => setSubAction('signin')}
-                className={`flex-1 py-1.5 font-semibold rounded cursor-pointer ${
+                className={`flex-1 py-1.5 font-semibold rounded cursor-pointer transition-colors ${
                   subAction === 'signin'
-                    ? 'bg-slate-800 text-cyan-400 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-[#0F2A4A] border border-[#E2DED5] shadow-xs'
+                    : 'text-slate-600 hover:text-[#0F1E36]'
                 }`}
               >
                 Sign In Existing Client
@@ -405,10 +405,10 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               <button
                 type="button"
                 onClick={() => setSubAction('register')}
-                className={`flex-1 py-1.5 font-semibold rounded cursor-pointer ${
+                className={`flex-1 py-1.5 font-semibold rounded cursor-pointer transition-colors ${
                   subAction === 'register'
-                    ? 'bg-slate-800 text-cyan-400 shadow-sm'
-                    : 'text-slate-400 hover:text-white'
+                    ? 'bg-white text-[#0F2A4A] border border-[#E2DED5] shadow-xs'
+                    : 'text-slate-600 hover:text-[#0F1E36]'
                 }`}
               >
                 Register Law Firm / Org
@@ -419,33 +419,33 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               {subAction === 'register' && (
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                   <div className="space-y-1">
-                    <label className="text-slate-300 font-semibold uppercase tracking-wider text-[10px] block">
+                    <label className="text-[#0F1E36] font-semibold uppercase tracking-wider text-[10px] block">
                       Full Name / Title
                     </label>
                     <div className="relative">
-                      <User className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+                      <User className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                       <input
                         type="text"
                         placeholder="e.g. Sarah Miller, Esq."
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 text-xs"
+                        className="w-full pl-9 pr-3 py-2 bg-[#FAF8F4] border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] text-xs"
                       />
                     </div>
                   </div>
 
                   <div className="space-y-1">
-                    <label className="text-slate-300 font-semibold uppercase tracking-wider text-[10px] block">
+                    <label className="text-[#0F1E36] font-semibold uppercase tracking-wider text-[10px] block">
                       Firm / Organization
                     </label>
                     <div className="relative">
-                      <Building2 className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+                      <Building2 className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                       <input
                         type="text"
                         placeholder="e.g. Miller & Partners LLP"
                         value={organization}
                         onChange={(e) => setOrganization(e.target.value)}
-                        className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 text-xs"
+                        className="w-full pl-9 pr-3 py-2 bg-[#FAF8F4] border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] text-xs"
                       />
                     </div>
                   </div>
@@ -453,35 +453,35 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               )}
 
               <div className="space-y-1">
-                <label className="text-slate-300 font-semibold uppercase tracking-wider text-[10px] block">
+                <label className="text-[#0F1E36] font-semibold uppercase tracking-wider text-[10px] block">
                   Work Email Address
                 </label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+                  <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                   <input
                     type="email"
                     required
                     placeholder="counsel@firm.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 text-xs"
+                    className="w-full pl-9 pr-3 py-2 bg-[#FAF8F4] border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] text-xs"
                   />
                 </div>
               </div>
 
               {subAction === 'register' && (
                 <div className="space-y-1">
-                  <label className="text-slate-300 font-semibold uppercase tracking-wider text-[10px] block">
+                  <label className="text-[#0F1E36] font-semibold uppercase tracking-wider text-[10px] block">
                     Case Docket Reference (Optional)
                   </label>
                   <div className="relative">
-                    <Briefcase className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+                    <Briefcase className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                     <input
                       type="text"
                       placeholder="e.g. Deposition Docket #8841-A"
                       value={matterRef}
                       onChange={(e) => setMatterRef(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 text-xs"
+                      className="w-full pl-9 pr-3 py-2 bg-[#FAF8F4] border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] text-xs"
                     />
                   </div>
                 </div>
@@ -489,35 +489,35 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
               <div className="space-y-1">
                 <div className="flex items-center justify-between">
-                  <label className="text-slate-300 font-semibold uppercase tracking-wider text-[10px]">
+                  <label className="text-[#0F1E36] font-semibold uppercase tracking-wider text-[10px]">
                     Password
                   </label>
                   {subAction === 'signin' && (
-                    <span className="text-[10px] text-cyan-400 hover:underline cursor-pointer">
+                    <span className="text-[10px] text-[#0F2A4A] font-semibold hover:underline cursor-pointer">
                       Forgot Password?
                     </span>
                   )}
                 </div>
                 <div className="relative">
-                  <KeyRound className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+                  <KeyRound className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                   <input
                     type="password"
                     required
                     placeholder="••••••••••••"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
-                    className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 text-xs font-mono"
+                    className="w-full pl-9 pr-3 py-2 bg-[#FAF8F4] border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] text-xs font-mono"
                   />
                 </div>
               </div>
 
               {subAction === 'register' && (
-                <label className="flex items-start gap-2 text-[11px] text-slate-300 pt-0.5 cursor-pointer select-none">
+                <label className="flex items-start gap-2 text-[11px] text-slate-600 pt-0.5 cursor-pointer select-none">
                   <input
                     type="checkbox"
                     checked={signNda}
                     onChange={(e) => setSignNda(e.target.checked)}
-                    className="mt-0.5 rounded border-slate-700 text-cyan-400 focus:ring-cyan-400 focus:ring-offset-slate-900"
+                    className="mt-0.5 rounded border-[#D4CFC4] accent-[#0F2A4A]"
                   />
                   <span>
                     Execute mutual Bilateral NDA under Wyoming corporate jurisdiction with zero persistent data retention.
@@ -527,7 +527,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
               <button
                 type="submit"
-                className="w-full py-2.5 px-4 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-xl transition-all shadow-md hover:shadow-cyan-500/20 cursor-pointer flex items-center justify-center gap-2"
+                className="w-full py-2.5 px-4 bg-[#0F2A4A] hover:bg-[#173B66] text-white font-semibold text-xs rounded-xl transition-all shadow-sm cursor-pointer flex items-center justify-center gap-2"
               >
                 <span>
                   {subAction === 'signin' ? 'Sign In & Access Case Dockets' : 'Register Firm & Create Workspace'}
@@ -543,30 +543,30 @@ export const AuthModal: React.FC<AuthModalProps> = ({
           <div className="space-y-3.5 pt-1">
             {!magicCodeSent ? (
               <form onSubmit={handleSendMagicLink} className="space-y-3 text-xs">
-                <p className="text-slate-300 text-xs leading-relaxed">
+                <p className="text-slate-600 text-xs leading-relaxed">
                   Enter your firm email. We will dispatch an encrypted, single-use authentication link and 6-digit access code directly to your inbox.
                 </p>
 
                 <div className="space-y-1">
-                  <label className="text-slate-300 font-semibold uppercase tracking-wider text-[10px] block">
+                  <label className="text-[#0F1E36] font-semibold uppercase tracking-wider text-[10px] block">
                     Work Email Address
                   </label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-slate-500 absolute left-3 top-2.5" />
+                    <Mail className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
                     <input
                       type="email"
                       required
                       placeholder="counsel@firm.com"
                       value={magicEmail}
                       onChange={(e) => setMagicEmail(e.target.value)}
-                      className="w-full pl-9 pr-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 placeholder-slate-500 focus:outline-none focus:border-cyan-400 text-xs"
+                      className="w-full pl-9 pr-3 py-2 bg-[#FAF8F4] border border-[#D4CFC4] rounded-lg text-[#0F1E36] placeholder-slate-400 focus:outline-none focus:border-[#0F2A4A] text-xs"
                     />
                   </div>
                 </div>
 
                 <button
                   type="submit"
-                  className="w-full py-2.5 px-4 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 bg-[#0F2A4A] hover:bg-[#173B66] text-white font-semibold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>Send Encrypted Magic Link</span>
@@ -574,29 +574,29 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               </form>
             ) : (
               <div className="space-y-3 text-xs">
-                <div className="p-3 bg-cyan-950/30 border border-cyan-800/60 rounded-xl space-y-1">
-                  <div className="font-semibold text-cyan-300">Magic Code Dispatched!</div>
-                  <p className="text-[11px] text-slate-300">
-                    A single-use verification code was transmitted to <strong className="text-white">{magicEmail}</strong>.
+                <div className="p-3 bg-[#FDF8F0] border border-[#E6D7BE] rounded-xl space-y-1">
+                  <div className="font-semibold text-[#0F2A4A]">Magic Code Dispatched!</div>
+                  <p className="text-[11px] text-slate-700">
+                    A single-use verification code was transmitted to <strong className="text-[#0F1E36]">{magicEmail}</strong>.
                   </p>
                 </div>
 
                 <div className="space-y-1">
-                  <label className="text-slate-300 font-semibold uppercase tracking-wider text-[10px] block">
+                  <label className="text-[#0F1E36] font-semibold uppercase tracking-wider text-[10px] block">
                     6-Digit Verification Code
                   </label>
                   <input
                     type="text"
                     value={magicCode}
                     onChange={(e) => setMagicCode(e.target.value)}
-                    className="w-full px-3 py-2 bg-slate-950 border border-slate-700 rounded-lg text-slate-100 text-center font-mono text-base tracking-widest focus:outline-none focus:border-cyan-400"
+                    className="w-full px-3 py-2 bg-[#FAF8F4] border border-[#D4CFC4] rounded-lg text-[#0F1E36] text-center font-mono text-base tracking-widest focus:outline-none focus:border-[#0F2A4A]"
                   />
                 </div>
 
                 <button
                   type="button"
                   onClick={handleVerifyMagicCode}
-                  className="w-full py-2.5 px-4 bg-cyan-400 hover:bg-cyan-300 text-slate-950 font-bold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2"
+                  className="w-full py-2.5 px-4 bg-[#0F2A4A] hover:bg-[#173B66] text-white font-semibold text-xs rounded-xl transition-all cursor-pointer flex items-center justify-center gap-2"
                 >
                   <CheckCircle2 className="w-4 h-4" />
                   <span>Verify Code & Open Workspace</span>
@@ -607,9 +607,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
         )}
 
         {/* Security & Address Footer */}
-        <div className="pt-3 border-t border-slate-800 flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-[11px] text-slate-400">
-          <div className="flex items-center gap-1.5 text-emerald-400">
-            <ShieldCheck className="w-3.5 h-3.5 shrink-0" />
+        <div className="pt-3 border-t border-[#E2DED5] flex flex-wrap items-center justify-between gap-2 text-[10px] sm:text-[11px] text-slate-500">
+          <div className="flex items-center gap-1.5 text-emerald-800 font-medium">
+            <ShieldCheck className="w-3.5 h-3.5 shrink-0 text-emerald-700" />
             <span>FIDO2 / AES-256 Encrypted Session</span>
           </div>
           <div>Sheridan, Wyoming · Scriptify Transcripts</div>
