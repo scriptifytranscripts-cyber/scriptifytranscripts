@@ -246,16 +246,19 @@ export const Hero: React.FC<HeroProps> = ({ onOpenPortal, onSelectSample, onOpen
 
   return (
     <section id="hero" className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-24">
-      {/* Authentic Legal Transcription Background with dark cinematic overlay */}
-      <div className="absolute inset-0 pointer-events-none z-0">
+      {/* Authentic Legal Transcription Background - Clearly visible courtroom proceedings */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         <img
           src={legalCourtroomBg}
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).src = '/legal-bg.jpg';
+          }}
           alt="Legal courtroom deposition and transcription proceedings"
-          className="w-full h-full object-cover object-center opacity-30 filter contrast-125 saturate-75"
+          className="w-full h-full object-cover object-center opacity-55 filter contrast-115 saturate-90"
         />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/92 to-slate-950/85" />
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-950/85 to-slate-950" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-cyan-950/30 via-transparent to-transparent" />
+        {/* Directional scrim: darker on left for text legibility, transparent on center/right for courtroom visibility */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950 via-slate-950/85 to-slate-950/65" />
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
       </div>
 
       {/* Ambient background glow matching the waveform gradient tones */}

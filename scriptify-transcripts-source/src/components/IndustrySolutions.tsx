@@ -1,5 +1,6 @@
 import React from 'react';
 import { Scale, Briefcase, GraduationCap, Radio, ArrowUpRight, FileText, CheckCircle2 } from 'lucide-react';
+import legalTrialTranscriptsImg from '../assets/images/legal_trial_transcripts_1794485493654.jpg';
 
 interface IndustrySolutionsProps {
   onSelectDomain: (domain: 'legal' | 'finance' | 'medical' | 'general') => void;
@@ -71,9 +72,8 @@ export const IndustrySolutions: React.FC<IndustrySolutionsProps> = ({ onSelectDo
           <div className="md:col-span-5 rounded-2xl bg-slate-900 border border-slate-800 hover:border-cyan-500/40 transition-all overflow-hidden flex flex-col justify-between shadow-xl group">
             <div className="relative aspect-[16/10] overflow-hidden">
               <img
-                src="/src/assets/images/legal_trial_transcripts_1794485493654.jpg"
+                src={legalTrialTranscriptsImg}
                 alt="Legal trial transcripts binder with docket numbers, gavel, and attorney headphones"
-                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent" />

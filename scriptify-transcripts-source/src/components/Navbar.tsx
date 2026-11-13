@@ -14,6 +14,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { ClientUser } from '../types';
+import scriptifyLogo from '../assets/images/scriptify_polished_logo_1794312499371.jpg';
 
 export type ViewType = 'overview' | 'services' | 'clients' | 'pricing' | 'security' | 'portal';
 
@@ -52,18 +53,23 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-50 w-full bg-slate-950/95 backdrop-blur-md border-b border-slate-800/80 transition-colors">
       <div className="max-w-7xl mx-auto flex items-center justify-between gap-4 px-4 sm:px-6 py-3">
-        {/* Left: Brand Identity */}
+        {/* Left: Brand Identity - Clicking returns to Home Overview */}
         <button
           onClick={() => handleNavClick('overview')}
           className="flex items-center gap-2.5 sm:gap-3 text-left whitespace-nowrap shrink-0 cursor-pointer group"
+          title="Return to Home Overview"
+          aria-label="Return to Home Overview"
         >
           <img
-            src="/src/assets/images/scriptify_polished_logo_1794312499371.jpg"
-            alt="Scriptify Transcripts"
-            className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg object-contain bg-white p-0.5 border border-cyan-400/40 group-hover:border-cyan-400 transition-colors shrink-0"
+            src={scriptifyLogo}
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).src = '/logo.jpg';
+            }}
+            alt="Scriptify Transcripts Logo"
+            className="w-8 h-8 sm:w-9 sm:h-9 rounded-lg object-contain bg-white p-0.5 border border-cyan-400/40 group-hover:border-cyan-400 group-hover:scale-105 transition-all shrink-0 shadow-sm"
           />
           <div className="leading-tight">
-            <span className="text-base sm:text-lg font-extrabold tracking-tight text-white block">
+            <span className="text-base sm:text-lg font-extrabold tracking-tight text-white block group-hover:text-cyan-300 transition-colors">
               SCRIPTIFY<span className="text-cyan-400 text-[11px] sm:text-xs font-semibold ml-1.5 uppercase tracking-wider">Transcripts</span>
             </span>
             <span className="hidden sm:block text-[9px] font-mono text-slate-400 tracking-wider">
@@ -159,22 +165,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             </button>
           )}
 
-          {/* Primary Action Button - Clearly Labeled to avoid duplication */}
-          {currentView !== 'portal' ? (
-            <button
-              onClick={() => handleNavClick('portal')}
-              className="px-3.5 sm:px-4 py-2 text-xs font-semibold text-slate-950 bg-cyan-400 rounded-lg hover:bg-cyan-300 transition-all shadow-sm hover:shadow-cyan-500/20 whitespace-nowrap shrink-0 cursor-pointer"
-            >
-              Start Deposition Order
-            </button>
-          ) : (
-            <button
-              onClick={() => handleNavClick('overview')}
-              className="px-3.5 sm:px-4 py-2 text-xs font-medium text-slate-200 bg-slate-900 border border-slate-700 rounded-lg hover:bg-slate-800 transition-colors whitespace-nowrap shrink-0 cursor-pointer"
-            >
-              Back to Overview
-            </button>
-          )}
+          {/* Primary Action Button - Clearly Labeled */}
+          <button
+            onClick={() => handleNavClick('portal')}
+            className="px-3.5 sm:px-4 py-2 text-xs font-semibold text-slate-950 bg-cyan-400 rounded-lg hover:bg-cyan-300 transition-all shadow-sm hover:shadow-cyan-500/20 whitespace-nowrap shrink-0 cursor-pointer"
+          >
+            Start Deposition Order
+          </button>
 
           {/* Mobile & Tablet Hamburger Toggle */}
           <button

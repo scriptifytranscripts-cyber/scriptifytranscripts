@@ -1,5 +1,5 @@
-import React from 'react';
 import { ShieldCheck, Lock, Server, KeyRound, EyeOff, CheckCircle, FileText, ArrowRight } from 'lucide-react';
+import securityVaultImg from '../assets/images/security_vault_datacenter_1794310482794.jpg';
 
 interface SecurityComplianceProps {
   onOpenLegal?: (type: 'privacy' | 'terms' | 'confidentiality' | 'invoicing') => void;
@@ -73,9 +73,8 @@ export const SecurityCompliance: React.FC<SecurityComplianceProps> = ({ onOpenLe
           <div className="lg:col-span-6 relative rounded-2xl overflow-hidden border border-slate-800 bg-slate-900 shadow-2xl flex flex-col">
             <div className="relative aspect-[16/10] overflow-hidden">
               <img
-                src="/src/assets/images/security_vault_datacenter_1794310482794.jpg"
+                src={securityVaultImg}
                 alt="Enterprise cryptographic datacenter corridor and security architecture"
-                referrerPolicy="no-referrer"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Quote } from 'lucide-react';
+import avatarSecurityDirector from '../assets/images/avatar_security_director_1794310482642.jpg';
 
 export const Testimonials: React.FC = () => {
   const reviews = [
@@ -26,7 +27,7 @@ export const Testimonials: React.FC = () => {
       quote:
         'Client-side AES-256 pre-encryption allows us to process confidential M&A audio recordings without exposing unencrypted voice buffers to external cloud storage. In our annual SOC 2 Type II audit, Scriptify passed all cryptographic compliance checks with zero exceptions.',
       metric: 'Zero Audit Exceptions Across 3 Years',
-      avatar: '/src/assets/images/avatar_security_director_1794310482642.jpg',
+      avatar: avatarSecurityDirector,
     },
   ];
 

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Lock, Mail, MapPin, ShieldCheck, UserCheck } from 'lucide-react';
 import { LegalModalType } from './LegalModals';
 import { ViewType } from './Navbar';
+import scriptifyLogo from '../assets/images/scriptify_polished_logo_1794312499371.jpg';
 
 interface FooterProps {
   currentView: ViewType;
@@ -36,7 +37,10 @@ export const Footer: React.FC<FooterProps> = ({
               className="flex items-center gap-3 cursor-pointer text-left group"
             >
               <img
-                src="/src/assets/images/scriptify_polished_logo_1794312499371.jpg"
+                src={scriptifyLogo}
+                onError={(e) => {
+                  (e.currentTarget as HTMLImageElement).src = '/logo.jpg';
+                }}
                 alt="Scriptify Transcripts Logo"
                 className="w-9 h-9 rounded-lg object-contain bg-white p-0.5 border border-cyan-400/40 group-hover:border-cyan-400 transition-colors"
               />
