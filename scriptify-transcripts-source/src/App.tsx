@@ -28,8 +28,57 @@ import clinicalBoardReviewImg from './assets/images/clinical_board_review_179459
 import legalTrialTranscriptsImg from './assets/images/legal_trial_transcripts_1794485493654.jpg';
 import securityVaultImg from './assets/images/security_vault_datacenter_1794310482794.jpg';
 
+const VIEW_SEO: Record<ViewType, { path: string; title: string; description: string }> = {
+  overview: {
+    path: '/',
+    title: 'Scriptify Transcripts | Legal & Clinical Transcription',
+    description:
+      'Court-certified legal deposition, corporate, and HIPAA clinical transcription with 99.8% verbatim accuracy from $1.45/min. Upload audio securely today.',
+  },
+  services: {
+    path: '/services',
+    title: 'Legal & Deposition Transcription Services | Scriptify',
+    description:
+      'Rule 30(b)(6) courtroom depositions, corporate briefings, clinical trials, and media transcripts formatted with 99.8% verbatim accuracy.',
+  },
+  clients: {
+    path: '/clients',
+    title: 'Client Case Studies & Results | Scriptify Transcripts',
+    description:
+      'See how trial law firms, clinical institutions, and advisory boards streamline transcription with 99.8% accuracy and transparent per-minute pricing.',
+  },
+  pricing: {
+    path: '/pricing',
+    title: 'Transcription Pricing & Cost Estimator | Scriptify',
+    description:
+      'Transparent per-minute transcription pricing starting at $1.45/min for 48h certified delivery, 24h rush, and 12h expedited courtroom deadlines.',
+  },
+  security: {
+    path: '/security',
+    title: 'HIPAA Security & Zero-Retention NDA | Scriptify',
+    description:
+      'Client-side AES-256 encryption, ephemeral RAM buffers, zero persistent storage, and executed Wyoming Bilateral NDAs for legal and medical audio.',
+  },
+  portal: {
+    path: '/portal',
+    title: 'Encrypted Client Portal & Upload | Scriptify Transcripts',
+    description:
+      'Upload legal, corporate, or clinical audio files securely under AES-256 encryption and inspect live synchronized verbatim transcripts.',
+  },
+};
+
+function getViewFromPathname(pathname: string): ViewType {
+  const clean = pathname.replace(/\/+$/, '') || '/';
+  const entry = (Object.entries(VIEW_SEO) as [ViewType, { path: string }][]).find(
+    ([, cfg]) => cfg.path === clean
+  );
+  return entry ? entry[0] : 'overview';
+}
+
 export default function App() {
-  const [currentView, setCurrentView] = useState<ViewType>('overview');
+  const [currentView, setCurrentView] = useState<ViewType>(() =>
+    getViewFromPathname(window.location.pathname)
+  );
   const [initialSampleId, setInitialSampleId] = useState<string | null>(null);
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [prefilledNotes, setPrefilledNotes] = useState<string | null>(null);
@@ -74,8 +123,35 @@ export default function App() {
     setAuthModalOpen(true);
   };
 
+  // Sync browser back/forward navigation with view state
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentView(getViewFromPathname(window.location.pathname));
+    };
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  // Update URL path, document title, meta description, and canonical link per route for SEO
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+    const seo = VIEW_SEO[currentView];
+    document.title = seo.title;
+
+    if (window.location.pathname !== seo.path) {
+      window.history.pushState({}, '', seo.path);
+    }
+
+    const metaDesc = document.querySelector('meta[name="description"]');
+    if (metaDesc) {
+      metaDesc.setAttribute('content', seo.description);
+    }
+
+    const canonicalHref = `${window.location.origin}${seo.path}`;
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      canonical.setAttribute('href', canonicalHref);
+    }
   }, [currentView]);
 
   const handleOpenPortalWithSample = (sampleId: string) => {
